@@ -1,0 +1,10 @@
+{
+  "auth": {
+    "cs203webbe202543": {
+      "service": "Cognito",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [],
+      "customAuth": false
+    }
+  }
+}
