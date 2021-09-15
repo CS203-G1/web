@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import Sidebar from '../components/Common/Sidebar'
+//@ts-ignore
 import { UilSearch, UilBell, UilUserCircle, UilAngleDown } from '@iconscout/react-unicons'
 
 const Dashboard = () => {
