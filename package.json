@@ -3,12 +3,14 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev -p 3001",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
   },
   "dependencies": {
+    "@iconscout/react-unicons": "^1.1.6",
+    "@iconscout/react-unicons-solid": "^0.0.3",
     "antd": "^4.16.12",
     "autoprefixer": "^10.3.2",
     "aws-amplify": "^4.2.9",
