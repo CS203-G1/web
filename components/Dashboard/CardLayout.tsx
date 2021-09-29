@@ -7,7 +7,7 @@ interface props {
 
 const CardLayout = (props:props) => {
     return (
-        <div className="card bg-white">
+        <div className="card bg-white flex-auto">
             <h1 className="text-xl font-bold">
                 {props.header}
             </h1>

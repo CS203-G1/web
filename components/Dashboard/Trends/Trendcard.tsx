@@ -1,8 +1,12 @@
+import React from "react"
+import CardLayout from "../CardLayout"
+import TrendChart from "./TrendChart"
+
 const TrendCard = () => {
     return (
-        <div className="card bg-white ">
-
-        </div>
+        <CardLayout header="Trends">
+            <TrendChart />
+        </CardLayout>
     )
 }
 export default TrendCard
