@@ -10,7 +10,7 @@ interface props {
 const Navbar = () => {
     return(
         <div className="flex-1 flex flex-col">
-                <div className="flex flex-row justify-between items-center w-full bg-white px-10 py-4">
+                <div className="flex flex-row justify-between items-center w-full px-10 py-4">
                     <h1 className="text-2xl font-semibold">
                         Dashboard
                     </h1>

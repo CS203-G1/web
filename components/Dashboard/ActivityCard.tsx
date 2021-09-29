@@ -15,11 +15,11 @@ const ActivityCard = (props: props) => {
 
     return (
         <div className={`card bg-white flex-1 flex flex-col gap-3`}>
-            <h2 className="font-semibold text-md">
+            <h2 className="font-bold text-md">
                 {props.type}
             </h2>
 
-            <h1 className="text-xl font-bold flex flex-row justify-between">
+            <h1 className="text-xl font-extrabold flex flex-row justify-between">
                 <div>
                     {props.value}
                 </div>

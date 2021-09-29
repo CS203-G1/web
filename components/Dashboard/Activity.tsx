@@ -25,9 +25,6 @@ const Activity = () => {
     ]
     return (
         <div className="p-4 flex-1">
-            <h1 className="text-xl font-semibold mb-2">
-                Activity
-            </h1>
             <div className="flex flex-wrap gap-2">
                 {
                     mockData.map((item, index) => {
