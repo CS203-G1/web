@@ -7,8 +7,11 @@ import Layout from '../components/Common/Layout'
 const Dashboard = () => {
     return (
         <Layout>
-            <div className="flex flex-row min-h-screen">
+            <div className="flex flex-col gap-3 w-full min-h-screen">
                 <Activity />
+                <div className="flex flex-row gap-3">
+                    
+                </div>
             </div>
         </Layout>
     )
