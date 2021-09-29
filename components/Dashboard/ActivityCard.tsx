@@ -1,5 +1,5 @@
 //@ts-ignore
-import { UilBell, UilEllipsisH, UilAngleUp } from '@iconscout/react-unicons'
+import { UilBell, UilEllipsisH, UilAngleUp, UilArrowGrowth, UilChartDown } from '@iconscout/react-unicons'
 
 interface props {
     value: number
@@ -8,38 +8,30 @@ interface props {
     index: number
 }
 
-const ActivityCard = (props:props) => {
+const ActivityCard = (props: props) => {
     const bgColor = ['blue', 'green', 'indigo', 'blue']
+    const graph = props.change > 0 ? <UilArrowGrowth /> : <UilChartDown />
+    const graphColor = props.change > 0 ? "green" : "red"
+
     return (
-        <div className={`card bg-gradient-to-r from-${bgColor[props.index]}-500 via-${bgColor[props.index]}-400 to-${bgColor[props.index]}-300 flex flex-row gap-6`}>
+        <div className={`card bg-white flex-1 flex flex-col gap-3`}>
+            <h2 className="font-semibold text-md">
+                {props.type}
+            </h2>
 
-                    <div className="flex-1 flex flex-col gap-3">
-                        <div className="flex">
-                            <div className="p-2 bg-white rounded-md text-blue-200">
-                                <UilBell />
-                            </div>
-                        </div>
-
-                        <div>
-                            <h1 className="text-xl text-white">
-                                {props.value}
-                            </h1>
-                            <h2 className="text-white text-xs">
-                                {props.type}
-                            </h2>
-                        </div>
-                    </div>
-
-                    <div className="flex-1 flex flex-col items-end h-full justify-between text-white">
-                        <UilEllipsisH />
-
-                        <div className="border border-white rounded-full px-2 py-1 text-xs flex items-center">
-                            <span>+{props.change}%</span>
-                            <UilAngleUp />
-                        </div>
-                    </div>
-
+            <h1 className="text-xl font-bold flex flex-row justify-between">
+                <div>
+                    {props.value}
                 </div>
+
+                <div className={`flex items-center text-${graphColor}-500`}>
+                    <span className="text-sm">
+                        {props.change}%
+                    </span>
+                    {graph}
+                </div>
+            </h1>
+        </div>
     )
 }
 export default ActivityCard

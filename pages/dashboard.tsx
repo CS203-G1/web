@@ -9,7 +9,6 @@ const Dashboard = () => {
         <Layout>
             <div className="flex flex-row min-h-screen">
                 <Activity />
-                <div className="flex-1"></div>
             </div>
         </Layout>
     )

@@ -4,23 +4,23 @@ const Activity = () => {
     const mockData = [
         {
             value: 1472,
-            type: "Active Alert",
+            type: "Total Employees",
             change: 2.36
         },
         {
             value: 1472,
-            type: "Active Alert",
+            type: "Number on leave",
+            change: -22.36
+        },
+        {
+            value: 1472,
+            type: "New Employee",
             change: 2.36
         },
         {
             value: 1472,
-            type: "Active Alert",
-            change: 2.36
-        },
-        {
-            value: 1472,
-            type: "Active Alert",
-            change: 2.36
+            type: "Covid Rate",
+            change: 7.36
         },
     ]
     return (
