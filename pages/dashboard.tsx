@@ -4,6 +4,7 @@ import Activity from '../components/Dashboard/Activity/Activity'
 import Navbar from '../components/Common/Navbar'
 import Layout from '../components/Common/Layout'
 import WorkingCard from '../components/Dashboard/Working/WorkingCard'
+import AttendanceCard from '../components/Dashboard/Attendance/AttendanceCard'
 
 const Dashboard = () => {
     return (
@@ -12,6 +13,8 @@ const Dashboard = () => {
                 <Activity />
                 <div className="flex flex-row gap-3">
                     <WorkingCard />
+                    <AttendanceCard />
+                    
                 </div>
             </div>
         </Layout>

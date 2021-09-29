@@ -3,7 +3,7 @@ import WorkingChart from "./WorkingChart"
 
 const WorkingCard = () => {
     return (
-        <div className="card bg-white">
+        <div className="card bg-white flex flex-col justify-between">
             <h1 className="text-xl font-bold">
                 Working Format
             </h1>
