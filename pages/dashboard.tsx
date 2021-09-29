@@ -6,6 +6,7 @@ import Layout from '../components/Common/Layout'
 import WorkingCard from '../components/Dashboard/Working/WorkingCard'
 import AttendanceCard from '../components/Dashboard/Attendance/AttendanceCard'
 import RequestCard from '../components/Dashboard/Requests/RequestCard'
+import TrendCard from '../components/Dashboard/Trends/Trendcard'
 
 const Dashboard = () => {
     return (
@@ -16,6 +17,7 @@ const Dashboard = () => {
                     <WorkingCard />
                     <AttendanceCard />
                     <RequestCard />
+                    <TrendCard />
                 </div>
             </div>
         </Layout>

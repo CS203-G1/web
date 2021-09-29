@@ -1,3 +1,5 @@
+import React from "react"
+import CardLayout from "../CardLayout"
 import RequestItem from "./RequestItem"
 
 const RequestCard = () => {
@@ -20,20 +22,18 @@ const RequestCard = () => {
         },
     ]
     return (
-        <div className="card bg-white flex flex-col overflow-auto">
-            <h1 className="text-xl font-bold">
-                Requests
-            </h1>
-            <div className="flex flex-col">
-                {
-                    data.map((item, index) => {
-                        return (
-                            <RequestItem key={index} type={item.type} number={item.number} />
-                        )
-                    })
-                }
-            </div>
-        </div>
+        
+            <CardLayout header="Approvals">
+                <div className="flex flex-col">
+                    {
+                        data.map((item, index) => {
+                            return (
+                                <RequestItem key={index} type={item.type} number={item.number} />
+                            )
+                        })
+                    }
+                </div>
+            </CardLayout>
     )
 }
 export default RequestCard
