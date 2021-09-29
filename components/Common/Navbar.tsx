@@ -1,6 +1,7 @@
 import React from 'react'
 //@ts-ignore
 import { UilSearch, UilBell, UilUserCircle, UilAngleDown } from '@iconscout/react-unicons'
+import Link from 'next/link'
 
 interface props {
     photoUrl: string
@@ -23,18 +24,17 @@ const Navbar = () => {
                             <UilSearch size={20} />
                         </div>
 
-                        <div className="flex flex-row gap-2 items-center">
-                            <UilUserCircle size={30} />
-
-                            <p>
-                                Bing Yu Yap
-                            </p>
-
-                            <div className="mt-1">
-                                <UilAngleDown size={20} />
+                        <Link href="/profile">
+                            <div className="flex flex-row gap-2 items-center cursor-pointer">
+                                <UilUserCircle size={30} />
+                                <p>
+                                    Bing Yu Yap
+                                </p>
+                                <div className="mt-1">
+                                    <UilAngleDown size={20} />
+                                </div>
                             </div>
-
-                        </div>
+                        </Link>
                     </div>
                 </div>
 

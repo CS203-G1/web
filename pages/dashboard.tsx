@@ -1,15 +1,17 @@
 import { useState } from 'react'
 import Sidebar from '../components/Common/Sidebar'
-import Navbar from '../components/Dashboard/Navbar'
+import Activity from '../components/Dashboard/Activity'
+import Navbar from '../components/Common/Navbar'
+import Layout from '../components/Common/Layout'
 
 const Dashboard = () => {
     return (
-        <div className="min-h-screen bg-gray-100 flex flex-row">
-            <Sidebar />
-            <Navbar />
-
-
-        </div>
+        <Layout>
+            <div className="flex flex-row min-h-screen">
+                <Activity />
+                <div className="flex-1"></div>
+            </div>
+        </Layout>
     )
 }
 
