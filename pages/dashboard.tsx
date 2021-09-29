@@ -5,16 +5,17 @@ import Navbar from '../components/Common/Navbar'
 import Layout from '../components/Common/Layout'
 import WorkingCard from '../components/Dashboard/Working/WorkingCard'
 import AttendanceCard from '../components/Dashboard/Attendance/AttendanceCard'
+import RequestCard from '../components/Dashboard/Requests/RequestCard'
 
 const Dashboard = () => {
     return (
         <Layout>
             <div className="flex flex-col gap-6 w-full">
                 <Activity />
-                <div className="flex flex-row gap-3">
+                <div className="flex flex-row flex-wrap gap-3">
                     <WorkingCard />
                     <AttendanceCard />
-                    
+                    <RequestCard />
                 </div>
             </div>
         </Layout>
