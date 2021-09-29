@@ -24,7 +24,7 @@ const Activity = () => {
         },
     ]
     return (
-        <div className="p-4 flex-1">
+        <div>
             <div className="flex flex-wrap gap-2">
                 {
                     mockData.map((item, index) => {
