@@ -4,7 +4,7 @@ import TrendChart from "./TrendChart"
 
 const TrendCard = () => {
     return (
-        <CardLayout header="Trends">
+        <CardLayout header="Trends" flex="flex-initial">
             <TrendChart />
         </CardLayout>
     )

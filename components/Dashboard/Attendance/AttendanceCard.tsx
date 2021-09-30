@@ -4,8 +4,10 @@ import AttendanceChart from "./AttendanceChart"
 
 const AttendanceCard = () => {
     return (
-        <CardLayout header="Working History">
-            <AttendanceChart />
+        <CardLayout header="Working History" flex="flex-initial">
+            <div className="flex flex-row">
+                <AttendanceChart />
+            </div>
         </CardLayout>
     )
 }

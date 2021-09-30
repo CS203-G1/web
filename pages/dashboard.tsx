@@ -7,6 +7,7 @@ import WorkingCard from '../components/Dashboard/Working/WorkingCard'
 import AttendanceCard from '../components/Dashboard/Attendance/AttendanceCard'
 import RequestCard from '../components/Dashboard/Requests/RequestCard'
 import TrendCard from '../components/Dashboard/Trends/Trendcard'
+import OnSiteCard from '../components/Dashboard/OnSite/OnSiteCard'
 
 const Dashboard = () => {
     return (
@@ -18,6 +19,7 @@ const Dashboard = () => {
                     <AttendanceCard />
                     <RequestCard />
                     <TrendCard />
+                    <OnSiteCard />
                 </div>
             </div>
         </Layout>
