@@ -12,7 +12,13 @@ const AdminLogin = () => {
 
     const login = async () => {
         try {
+            console.log(email);
+            console.log(password);
+            
+            
             const res = await Auth.signIn(email, password)
+            console.log(res);
+            
         } catch(e) {
             console.log(e.message);
         }
@@ -21,11 +27,11 @@ const AdminLogin = () => {
     return (
         <div className="h-screen flex flex-row">
 
-            <div className="h-full w-1/2 bg-gray-100 flex flex-col justify-center px-36">
+            <div className="h-full flex-1 bg-gray-50 flex flex-col justify-center lg:px-36 px-10">
                 <div className="flex flex-col gap-6">
                     <div className="flex flex-col gap-2">
                         <h1 className="text-3xl font-bold">
-                            Login
+                            Admin Login
                         </h1>
                         
                         <p className="font-semibold text-gray-500">
@@ -33,20 +39,26 @@ const AdminLogin = () => {
                         </p>
                     </div>
 
-                    <form action="submit">
+                    <form>
                         <div className="flex flex-col gap-4">
                             <div className="flex flex-col gap-1">
                                 <label htmlFor="" className="font-semibold">
                                     Email*
                                 </label>
-                                <input type="email" className="rounded-full px-4 py-3 border" placeholder="mail@website.com" />
+                                <input type="email" className="rounded-full px-4 py-3 border" placeholder="mail@website.com" 
+                                onChange={(e) => {
+                                    setEmail(e.target.value)
+                                }}/>
                             </div>
 
                             <div className="flex flex-col gap-1">
                                 <label htmlFor="" className="font-semibold">
                                     Password*
                                 </label>
-                                <input type="email" className="rounded-full px-4 py-3 border" placeholder="Enter your password" />
+                                <input type="password" className="rounded-full px-4 py-3 border" placeholder="Enter your password" 
+                                onChange={(e) => {
+                                    setPassword(e.target.value)
+                                }} />
                             </div>
 
                             <div className="flex flex-row justify-between items-center">
@@ -63,7 +75,10 @@ const AdminLogin = () => {
                                 </Link>
                             </div>
 
-                            <button type="submit" className="rounded-full bg-blue-400 py-3 text-white text-center hover:bg-blue-600">
+                            <button type="button" className="rounded-full bg-blue-400 py-3 text-white text-center hover:bg-blue-600"
+                            onClick={() => {
+                                login()
+                            }}>
                                 Login
                             </button>
                         </div>
@@ -73,14 +88,14 @@ const AdminLogin = () => {
                         <span>
                             Not registered yet? 
                         </span>
-                        <a href="" className="text-blue-500 hover:text-blue-700">
-                            Create an account
-                        </a>
+                        <Link href="">
+                            <a href="" className="text-blue-500 hover:text-blue-700">Create an account</a>
+                        </Link>
                     </div>
                 </div>
             </div>
 
-            <div className="h-full flex-1 bg-blue-100 flex flex-col justify-center px-32">
+            <div className="h-full lg:flex flex-col hidden flex-1 bg-blue-100  justify-center px-32">
                 <div className="transform duration-300 ease-in-out scale-100 hover:scale-110">
                     <Image src={LoginImage} alt="Login image" />
                 </div>
