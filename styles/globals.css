@@ -3,6 +3,8 @@
 @tailwind utilities;
 
 @import '~antd/dist/antd.css';
+@import './Dashboard.css';
+@import './Login.css';
 
 html,
 body {
