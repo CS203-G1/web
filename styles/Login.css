@@ -1,0 +1,14 @@
+.role-card {
+
+}
+
+.role-card-arrow {
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0.3s linear,opacity 0.2s linear;
+}
+
+.role-card:hover > .role-card-arrow{
+    visibility: visible;
+    opacity: 1;
+}

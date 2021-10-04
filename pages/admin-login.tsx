@@ -1,4 +1,5 @@
 import { Formik, Field, Form } from "formik";
+<<<<<<< HEAD
 import Link from 'next/link'
 import Image from 'next/image'
 import LoginImage from '../public/Login/login.svg'
@@ -83,6 +84,30 @@ const AdminLogin = () => {
             <div className="h-full flex-1 bg-blue-100 flex flex-col justify-center px-32">
                 <div className="transform duration-300 ease-in-out scale-100 hover:scale-110">
                     <Image src={LoginImage} alt="Login image" />
+=======
+
+const AdminLogin = () => {
+    return (
+        <div className="h-screen flex flex-row">
+            <div className="h-full w-96 bg-blue-100">
+
+            </div>
+
+            <div className="h-full flex-1 bg-gray-100 flex flex-col justify-center items-center">
+                <div className="flex flex-col gap-3">
+                    <h1 className="text-3xl font-bold">
+                        Sign in to CS203
+                    </h1>
+
+                   <form action="submit">
+                        <div className="flex flex-col gap-2">
+                            <label htmlFor="">
+                                Email
+                            </label>
+                            <input type="email" className="" />
+                        </div>
+                   </form>
+>>>>>>> develop
                 </div>
             </div>
         </div>
