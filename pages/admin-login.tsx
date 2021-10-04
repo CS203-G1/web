@@ -4,19 +4,19 @@ import Image from 'next/image'
 import LoginImage from '../public/Login/login.svg'
 import { Auth } from 'aws-amplify'
 import { useState } from "react";
+import { useRouter } from "next/router";
 
 const AdminLogin = () => {
+
+    const router = useRouter()
 
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
 
     const login = async () => {
         try {
-            console.log(email);
-            console.log(password);
-            
-            
             const res = await Auth.signIn(email, password)
+            router.push("/dashboard")
             console.log(res);
             
         } catch(e) {
