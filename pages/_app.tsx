@@ -16,13 +16,13 @@ function MyApp({ Component, pageProps }: AppProps) {
   Amplify.configure(awsconfig)
 
   const getAccessToken = async () => {
-    try{
+    try {
       const { signInUserSession } = await Auth.currentAuthenticatedUser()
       const jwt =  signInUserSession.accessToken.jwtToken
       console.log(jwt);
       
       setAccessToken(jwt)
-    }catch (e) {
+    } catch (e) {
       router.push("/")
     }
   }

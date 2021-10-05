@@ -15,9 +15,9 @@ const NavigationItem: React.FC<props> = (props) => {
 
     const background = pathName === "/" + props.name.toLowerCase() ? "bg-blue-700 cursor-default" : "hover:bg-blue-700 cursor-pointer"
     return (
-        <Link href={props.path}>
-            <a href="" className={`px-3 py-3 hover:text-white ${background} rounded-sm flex flex-row gap-2 items-center`}>
-                {props.children}
+        <Link href={ props.path }>
+            <a href="" className={`px-3 py-3 hover:text-white ${ background } rounded-sm flex flex-row gap-2 items-center`}>
+                { props.children }
                 <p>
                     { props.name }
                 </p>
