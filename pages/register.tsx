@@ -1,22 +1,26 @@
-import { Formik, Field, Form } from "formik";
+import React, { useState } from "react"
 import Link from 'next/link'
+import { useRouter } from 'next/router'
+import { Auth } from "aws-amplify"
 import Image from 'next/image'
 import LoginImage from '../public/Login/login.svg'
-import { Auth } from 'aws-amplify'
-import { useState } from "react";
-import { useRouter } from "next/router";
 
-const AdminLogin = () => {
+const Register = () => {
 
     const router = useRouter()
 
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
+    const [repassword, setRepassword] = useState("")
+    const [organisationName, setOrganisationName] = useState("")
 
-    const login = async () => {
+
+    const register = async () => {
         try {
-            const res = await Auth.signIn(email, password)
-            router.push("/dashboard")
+            const res = await Auth.signUp({
+                username: email,
+                password: password
+            })
             console.log(res);
             
         } catch(e) {
@@ -24,26 +28,24 @@ const AdminLogin = () => {
         }
     }
 
+
     return (
         <div className="h-screen flex flex-row">
 
-            <div className="h-full flex-1 bg-gray-50 flex flex-col justify-center lg:px-36 px-10">
+            <div className="h-full flex-1 bg-gray-50 flex flex-col justify-center xl:px-36 px-10">
                 <div className="flex flex-col gap-6">
                     <div className="flex flex-col gap-2">
                         <h1 className="text-3xl font-bold">
-                            Admin Login
+                            Admin Registration
                         </h1>
                         
-                        <p className="font-semibold text-gray-500">
-                            Ease your load for rostering
-                        </p>
                     </div>
 
                     <form>
                         <div className="flex flex-col gap-4">
                             <div className="flex flex-col gap-1">
                                 <label htmlFor="" className="font-semibold">
-                                    Email*
+                                    Email
                                 </label>
                                 <input type="email" className="rounded-full px-4 py-3 border" placeholder="mail@website.com" 
                                 onChange={(e) => {
@@ -53,7 +55,7 @@ const AdminLogin = () => {
 
                             <div className="flex flex-col gap-1">
                                 <label htmlFor="" className="font-semibold">
-                                    Password*
+                                    Password
                                 </label>
                                 <input type="password" className="rounded-full px-4 py-3 border" placeholder="Enter your password" 
                                 onChange={(e) => {
@@ -61,36 +63,45 @@ const AdminLogin = () => {
                                 }} />
                             </div>
 
-                            <div className="flex flex-row justify-between items-center">
-                                <div className="flex flex-row items-center gap-2">
-                                    <input type="checkbox" name="" id=""/>
+                            <div className="flex flex-col gap-1">
+                                <label htmlFor="" className="font-semibold">
+                                    Re-Enter Password
+                                </label>
+                                <input type="password" className="rounded-full px-4 py-3 border" placeholder="Enter your password" 
+                                onChange={(e) => {
+                                    setRepassword(e.target.value)
+                                }} />
+                            </div>
 
-                                    <span className="font-semibold">
-                                        Remember me
-                                    </span>
-                                </div>
-
-                                <Link href="/">
-                                    Forget password?
-                                </Link>
+                            <div className="flex flex-col gap-1">
+                                <label htmlFor="" className="font-semibold">
+                                    Organisation Name
+                                </label>
+                                <input type="text" className="rounded-full px-4 py-3 border" placeholder="Enter your organisation name" 
+                                onChange={(e) => {
+                                    setOrganisationName(e.target.value)
+                                }} />
                             </div>
 
                             <button type="button" className="rounded-full bg-blue-400 py-3 text-white text-center hover:bg-blue-600"
                             onClick={() => {
-                                login()
+                                register()
                             }}>
-                                Login
+                                Register
                             </button>
                         </div>
                     </form>
 
                     <div className="flex flex-row gap-1">
                         <span>
-                            Not registered yet? 
+                            Have an account? Click 
                         </span>
-                        <Link href="/register">
-                            <a href="" className="text-blue-500 hover:text-blue-700">Create an account</a>
+                        <Link href="/">
+                            <a href="" className="text-blue-500 hover:text-blue-700">here</a>
                         </Link>
+                        <span>
+                            to login!
+                        </span>
                     </div>
                 </div>
             </div>
@@ -103,4 +114,4 @@ const AdminLogin = () => {
         </div>
     )
 }
-export default AdminLogin
+export default Register

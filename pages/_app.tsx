@@ -8,8 +8,10 @@ import { setAccessToken } from '../Global-Variables/accessToken'
 
 import type { AppProps } from 'next/app'
 import { QueryClient, QueryClientProvider } from 'react-query';
+import { Router, useRouter } from 'next/router';
 
 function MyApp({ Component, pageProps }: AppProps) {
+  const router = useRouter()
   const queryClient = new QueryClient()
   Amplify.configure(awsconfig)
 
@@ -17,9 +19,11 @@ function MyApp({ Component, pageProps }: AppProps) {
     try{
       const { signInUserSession } = await Auth.currentAuthenticatedUser()
       const jwt =  signInUserSession.accessToken.jwtToken
+      console.log(jwt);
+      
       setAccessToken(jwt)
     }catch (e) {
-      console.log(e);
+      router.push("/")
     }
   }
 
