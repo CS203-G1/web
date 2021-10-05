@@ -27,10 +27,10 @@ const Sidebar = () => {
                         <h3 className="text-xs text-blue-300 mb-3">
                             MAIN MENU
                         </h3>
-                        <NavigationItem name="Dashboard">
+                        <NavigationItem name="Dashboard" path="/dashboard">
                             <UisChart />
                         </NavigationItem>
-                        <NavigationItem name="Inbox">
+                        <NavigationItem name="Inbox"  path="/inbox">
                             <UilCommentDots />
                         </NavigationItem>
                     </div>
@@ -39,13 +39,13 @@ const Sidebar = () => {
                         <h3 className="text-xs text-blue-300 mb-3">
                             WORKSPACE
                         </h3>
-                        <NavigationItem name="Roster">
+                        <NavigationItem name="Roster"  path="/roster">
                             <UilCalendarAlt />
                         </NavigationItem>
-                        <NavigationItem name="Employees">
+                        <NavigationItem name="Employees" path="/employees">
                             <UilUserSquare />
                         </NavigationItem>
-                        <NavigationItem name="Analytics">
+                        <NavigationItem name="Analytics" path="/analytics">
                             <UilChartLine />
                         </NavigationItem>
                     </div>
@@ -54,7 +54,7 @@ const Sidebar = () => {
                         <h3 className="text-xs text-blue-300 mb-3">
                             General
                         </h3>
-                        <NavigationItem name="Settings">
+                        <NavigationItem name="Settings" path="/settings">
                             <UilSetting />
                         </NavigationItem>
                     </div>

@@ -2,8 +2,9 @@ import React, { useState } from "react"
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { Auth } from "aws-amplify"
-import Image from 'next/image'
+// @ts-ignore
 import LoginImage from '../public/Login/login.svg'
+import Image from 'next/image'
 
 const Register = () => {
 
