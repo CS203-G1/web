@@ -6,7 +6,7 @@ const Roster = () => {
     return (
         <Layout header="Roster Imum Occupancy 150">
             <div className="flex flex-col">
-                <div className="flex flex-row">
+                <div className="grid grid-cols-6">
                     <div className="flex-1 bg-white border border-gray-300 py-4 text-center font-bold text-indigo-500">
                     </div>
                     <div className="flex-1 bg-white border border-gray-300 py-4 text-center font-bold text-indigo-500">

@@ -1,8 +1,20 @@
-const EmployeeShiftItem = () => {
-    return (
-        <div className="flex-1 bg-white h-20 border border-gray-300">
+import React, { useEffect } from "react"
+import Empty from "./states/Empty"
+import Unavailable from "./states/Unavailable"
 
-        </div>
+const EmployeeShiftItem = () => {
+
+    const STATES = {
+        empty: <Empty />,
+        unavailable: <Unavailable />
+    }
+
+    return (
+        <>
+            {
+                STATES.unavailable
+            }
+        </>
     )
 }
 
