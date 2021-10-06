@@ -40,7 +40,7 @@ const Employees = () => {
                 <div className="grid 2xl:grid-cols-4 xl:grid-cols-3 lg:grid-cols-2 justify-evenly gap-10 py-6">
                     <EmployeeCard
                         photoUrl="https://picsum.photos/200"
-                        name="Bing Yu"
+                        name="Bing Yu Ling Yu"
                         email="hello@afterclass.com"
                         position="Tech Lead Lech Lead"
                         time="0"
