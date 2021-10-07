@@ -5,11 +5,9 @@ interface props {
     value: number
     type: string
     change: number
-    index: number
 }
 
 const ActivityCard = (props: props) => {
-    const bgColor = ['blue', 'green', 'indigo', 'blue']
     const graph = props.change > 0 ? <UilArrowGrowth /> : <UilChartDown />
     const graphColor = props.change > 0 ? "green" : "red"
 

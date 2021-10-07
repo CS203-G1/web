@@ -12,7 +12,7 @@ const EmployeeShiftItem = () => {
     return (
         <>
             {
-                STATES.unavailable
+                STATES.empty
             }
         </>
     )
