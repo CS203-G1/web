@@ -6,11 +6,11 @@ import { Moment } from "moment"
 import moment from "moment"
 // @ts-ignore
 import { UilAngleDown, UilAngleLeft, UilAngleRight } from '@iconscout/react-unicons'
+import RosterScheduling from "../components/Roster/RosterScheduling"
 
 const Roster = () => {
 
     const [date, setDate] = useState<string>(moment().format("LL"))
-    const [workLocation, setWorkLocation] = useState("")
 
     const dateOnChange = (date: Moment | null, dateString: string) => {
         setDate(dateString)
@@ -78,24 +78,7 @@ const Roster = () => {
                     </div>
                 </div>
 
-                <div className="flex flex-col items-center">
-                    <div className="flex flex-row gap-2 items-center">
-                        <div className="hover:text-blue-500 cursor-pointer"
-                            onClick={() => { setDate(moment(date, "LL").subtract(1, 'days').format("LL")) }}>
-                            <UilAngleLeft />
-                        </div>
-
-                        <div>
-                            {date}
-                        </div>
-
-                        <div className="hover:text-blue-500 cursor-pointer"
-                        onClick={() => {setDate(moment(date, "LL").add(1, 'days').format("LL"))}}
-                            >
-                            <UilAngleRight />
-                        </div>
-                    </div>
-                </div>
+                <RosterScheduling />
             </div>
         </Layout>
     )
