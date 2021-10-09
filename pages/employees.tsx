@@ -4,18 +4,21 @@ import Layout from "../components/Common/Layout"
 import AddEmployeeModal from "../components/Employees/AddEmployeeModal"
 import EmployeeCard from "../components/Employees/EmployeeCard"
 import { getAllEmployees } from '../services/employees/employees'
+import { Employee } from "../types/Employee/employee"
 
 const Employees = () => {
     const [addEmployeeModal, setAddEmployeeModal] = useState(false)
+    const [employees, setEmployees] = useState<Employee[]>()
 
     const getEmployees = async () => {
         const { signInUserSession } = await Auth.currentAuthenticatedUser()
-        const jwt =  signInUserSession.accessToken.jwtToken        
-        return await getAllEmployees(jwt)
+        const jwt = signInUserSession.accessToken.jwtToken
+        const res = await getAllEmployees(jwt)
+        setEmployees(res)
     }
 
     useEffect(() => {
-
+        getEmployees()
     }, [])
 
     const handleModalCancel = () => {
@@ -50,41 +53,20 @@ const Employees = () => {
                 </div>
 
                 <div className="grid 2xl:grid-cols-4 xl:grid-cols-3 lg:grid-cols-2 justify-evenly gap-10 py-6">
-                    <EmployeeCard
-                        photoUrl="https://picsum.photos/200"
-                        name="Bing Yu Ling Yu"
-                        email="hello@afterclass.com"
-                        position="Tech Lead Lech Lead"
-                        time="0"
-                        status="Vaccinated " />
-                    <EmployeeCard
-                        photoUrl="https://picsum.photos/200"
-                        name="Rui Xian Lei Xian"
-                        email="hello@afterclass.com"
-                        position="Frontend Dog"
-                        time="0"
-                        status="PCR Tested" />
-                    <EmployeeCard
-                        photoUrl="https://picsum.photos/200"
-                        name="Arving Larving"
-                        email="hello@afterclass.com"
-                        position="AWS Dashboard Admin"
-                        time="0"
-                        status="Not Tested" />
-                    <EmployeeCard
-                        photoUrl="https://picsum.photos/200"
-                        name="Felice Lelice"
-                        email="hello@afterclass.com"
-                        position="Diversity"
-                        time="0"
-                        status="Vaccinated " />
-                    <EmployeeCard
-                        photoUrl="https://picsum.photos/200"
-                        name="Jerald Lerald"
-                        email="hello@afterclass.com"
-                        position="DSC dude"
-                        time="0"
-                        status="ART Tested" />
+                    {
+                        employees && employees.map((item, index) => {
+                            return (
+                                <EmployeeCard
+                                    key={index}
+                                    id={item?.id}
+                                    photoUrl="https://picsum.photos/200"
+                                    name={item?.name}
+                                    email="byebye@afterclass.com"
+                                    position="Tech Lead Lech Lead"
+                                    status="Vaccinated " />
+                            )
+                        })
+                    }
                 </div>
             </Layout>
         </>
