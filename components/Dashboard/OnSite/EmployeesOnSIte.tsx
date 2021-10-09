@@ -17,7 +17,7 @@ const EmployeesOnSite = (props:props) => {
         "Not Tested": "red"
     }
     return (
-        <div className="grid grid-cols-3 py-3 hover:bg-blue-200 rounded-md px-2 cursor-pointer transform hover:scale-110 transition duration-150 ease-in-out">
+        <div className="grid grid-cols-3 py-3 hover:bg-blue-200 rounded-md px-2 cursor-pointer transform hover:scale-105 transition duration-150 ease-in-out">
             <div>
                 {props.name}
             </div>

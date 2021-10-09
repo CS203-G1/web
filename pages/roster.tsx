@@ -6,7 +6,8 @@ import { Moment } from "moment"
 import moment from "moment"
 // @ts-ignore
 import { UilAngleDown, UilAngleLeft, UilAngleRight } from '@iconscout/react-unicons'
-import RosterScheduling from "../components/Roster/RosterScheduling"
+// import RosterScheduling from "../components/Roster/ShiftScheduling"
+import ShiftScheduling from "../components/Roster/shift/ShiftScheduling"
 
 const Roster = () => {
 
@@ -78,7 +79,7 @@ const Roster = () => {
                     </div>
                 </div>
 
-                <RosterScheduling />
+                <ShiftScheduling />
             </div>
         </Layout>
     )

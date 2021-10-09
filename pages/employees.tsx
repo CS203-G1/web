@@ -1,10 +1,22 @@
-import React, { useState } from "react"
+import { Auth } from "aws-amplify"
+import React, { useEffect, useState } from "react"
 import Layout from "../components/Common/Layout"
 import AddEmployeeModal from "../components/Employees/AddEmployeeModal"
 import EmployeeCard from "../components/Employees/EmployeeCard"
+import { getAllEmployees } from '../services/employees/employees'
 
 const Employees = () => {
     const [addEmployeeModal, setAddEmployeeModal] = useState(false)
+
+    const getEmployees = async () => {
+        const { signInUserSession } = await Auth.currentAuthenticatedUser()
+        const jwt =  signInUserSession.accessToken.jwtToken        
+        return await getAllEmployees(jwt)
+    }
+
+    useEffect(() => {
+
+    }, [])
 
     const handleModalCancel = () => {
         setAddEmployeeModal(false)

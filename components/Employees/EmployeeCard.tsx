@@ -2,21 +2,13 @@
 import { UilClock, UilSyringe } from '@iconscout/react-unicons'
 import { Progress } from 'antd'
 import React from 'react'
-
-interface props {
-    photoUrl: string
-    name: string
-    email: string
-    time: string
-    status: string
-    position: string
-}
+import { Employee } from '../../types/Employee/employee'
 
 type dict = {
     [key: string]: string
 }
 
-const EmployeeCard = (props: props) => {
+const EmployeeCard = (props: Employee) => {
     const color:dict = {
         "Vaccinated ": "bg-green-500", 
         "ART Tested": "bg-blue-500",
