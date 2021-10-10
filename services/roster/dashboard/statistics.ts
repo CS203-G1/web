@@ -21,7 +21,7 @@ export const getEmployeesSummary = async ( accessToken: string ) => {
 }
 
 export const getWorkingHistory = async ( accessToken: string ) => {
-    const res = await axios.get(`${uri}companies/14f671b0-511e-43e4-86bb-6828f7a8e12d/work-statistics/weekly`, {
+    const res = await axios.get(`${uri}/companies/14f671b0-511e-43e4-86bb-6828f7a8e12d/work-statistics/weekly`, {
         headers: {
             Authorization: `Bearer ${accessToken}`
         }
