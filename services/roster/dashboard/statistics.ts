@@ -32,3 +32,29 @@ export const getWorkingHistory = async ( accessToken: string ) => {
     }
     return res.data
 }
+
+export const getOnsite = async ( accessToken: string ) => {
+    const res = await axios.get(`${uri}/companies/14f671b0-511e-43e4-86bb-6828f7a8e12d/work-statistics/employees/onsite`, {
+        headers: {
+            Authorization: `Bearer ${accessToken}`
+        }
+    })
+
+    if (res.status != 200) {
+        return []
+    }
+    return res.data
+}
+
+export const getRemoteAndOnsite = async ( accessToken: string ) => {
+    const res = await axios.get(`${uri}/companies/14f671b0-511e-43e4-86bb-6828f7a8e12d/work-statistics/daily`, {
+        headers: {
+            Authorization: `Bearer ${accessToken}`
+        }
+    })
+
+    if (res.status != 200) {
+        return []
+    }
+    return res.data
+}
