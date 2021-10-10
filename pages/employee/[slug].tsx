@@ -1,8 +1,16 @@
+import { useRouter } from 'next/router'
+import React from 'react'
+import Layout from '../../components/Common/Layout'
 const Employee = () => {
-    return (
-        <div>
+    const router = useRouter()
+    const { slug } = router.query
 
-        </div>
+    return (
+        <Layout header="Employee No need wash hands">
+            <div>
+                
+            </div>
+        </Layout>
     )
 }
 

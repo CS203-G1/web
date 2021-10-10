@@ -28,7 +28,9 @@ function MyApp({ Component, pageProps }: AppProps) {
   }
 
   useEffect(() => {
+    if (router.pathname != '/') {
       getAccessToken()
+    }
   }, [])
 
   return (
