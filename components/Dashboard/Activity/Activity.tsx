@@ -52,10 +52,10 @@ const Activity = () => {
                     })
                 } */}
 
-                <ActivityCard value={summary?.employeesCount as number} type="Total Employees" change={summary?.employeesCountChange as number}/>
-                <ActivityCard value={summary?.leaveCount as number} type="Employees on leave" change={summary?.leaveCountChange as number}/>
-                <ActivityCard value={summary?.onsiteCount as number} type="Employees on site" change={summary?.onsiteCountChange as number}/>
-                <ActivityCard value={summary?.covidCount as number} type="Covid Uptake" change={summary?.covidCountChange as number}/>
+                <ActivityCard value={summary?.employeesCount as number} type="Total Employees" change={summary?.employeesCountChange as number} />
+                <ActivityCard value={summary?.leaveCount as number} type="Employees on leave" change={summary?.leaveCountChange as number} />
+                <ActivityCard value={summary?.onsiteCount as number} type="Employees on site" change={summary?.onsiteCountChange as number} />
+                <ActivityCard value={summary?.covidCount as number} type="Covid Uptake" change={summary?.covidCountChange as number} />
             </div>
         </div>
     )
