@@ -33,14 +33,14 @@ const ShiftItem = (props: props) => {
                 setModal(true)
             }}>
                 <h1 className="text-xl text-white">
-                    {props.position}
+                    { props.position }
                 </h1>
                 <h3 className="text-white">
-                    {props.time_from} - {props.time_to}
+                    { props.time_from } - { props.time_to }
                 </h3>
 
                 <div>
-                    {props.num_assigned}/{props.num_total} Assigned
+                    { props.num_assigned }/{ props.num_total } Assigned
                     </div>
             </div>
         </>
