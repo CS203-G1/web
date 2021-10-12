@@ -61,7 +61,7 @@ const OnSiteCard = () => {
             {
                 data && data.map((item: any, index: any) => {
                     return (
-                        <EmployeesOnSite key={index} name={ item?.name } department={ item?.department?.name } status={ item?.healthStatus } />
+                        <EmployeesOnSite name={ item?.name } department={ item?.department?.name } status={ item?.healthStatus } />
                     )
                 })
             }

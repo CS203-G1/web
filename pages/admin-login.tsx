@@ -17,10 +17,8 @@ const AdminLogin = () => {
         try {
             const res = await Auth.signIn(email, password)
             router.push("/dashboard")
-            console.log(res);
             
         } catch(e) {
-            console.log(e.message);
         }
     }
 

@@ -22,10 +22,8 @@ const Register = () => {
                 username: email,
                 password: password
             })
-            console.log(res);
             
         } catch(e) {
-            console.log(e.message);
         }
     }
 
