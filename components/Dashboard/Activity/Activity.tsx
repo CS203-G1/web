@@ -44,14 +44,6 @@ const Activity = () => {
     return (
         <div>
             <div className="flex flex-wrap gap-2">
-                {/* {
-                    mockData.map((item, index) => {
-                        return (
-                            <ActivityCard value={item.value} type={item.type} change={item.change} key={index} index={index} />
-                        )
-                    })
-                } */}
-
                 <ActivityCard value={summary?.employeesCount as number} type="Total Employees" change={summary?.employeesCountChange as number} />
                 <ActivityCard value={summary?.leaveCount as number} type="Employees on leave" change={summary?.leaveCountChange as number} />
                 <ActivityCard value={summary?.onsiteCount as number} type="Employees on site" change={summary?.onsiteCountChange as number} />

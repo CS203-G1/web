@@ -53,7 +53,7 @@ const WorkingChart = () => {
                         return (
                             <>
 
-                                <Cell key={`cell-${index}`} fill={`${color[index]}`} strokeWidth={index * 4} />
+                                <Cell key={ `cell-${index}` } fill={ `${color[index]}` } strokeWidth={ index * 4}  />
                             </>
                         )
                     })
