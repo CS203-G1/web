@@ -5,43 +5,43 @@ const TrendChart = () => {
     const data = [
         {
           name: 'Feb',
-          CovidRate: 4000,
+          CovidCase: 4000,
           OnSite: 2400,
           Remote: 2400,
         },
         {
           name: 'Mar',
-          CovidRate: 3000,
+          CovidCase: 3000,
           OnSite: 1398,
           Remote: 2210,
         },
         {
           name: 'Apr',
-          CovidRate: 2000,
+          CovidCase: 2000,
           OnSite: 9800,
           Remote: 2290,
         },
         {
           name: 'May',
-          CovidRate: 2780,
+          CovidCase: 2780,
           OnSite: 3908,
           Remote: 2000,
         },
         {
           name: 'June',
-          CovidRate: 1890,
+          CovidCase: 1890,
           OnSite: 4800,
           Remote: 2181,
         },
         {
           name: 'July',
-          CovidRate: 2390,
+          CovidCase: 2390,
           OnSite: 3800,
           Remote: 2500,
         },
         {
           name: 'Aug',
-          CovidRate: 3490,
+          CovidCase: 3490,
           OnSite: 4300,
           Remote: 2100,
         },
@@ -64,7 +64,7 @@ const TrendChart = () => {
               <YAxis />
               <Tooltip />
               <Legend verticalAlign="bottom"/>
-              <Area type="monotone" dataKey="CovidRate" stackId="1" stroke="#8884d8" fill="#8884d8" />
+              <Area type="monotone" dataKey="CovidCase" stackId="1" stroke="#8884d8" fill="#8884d8" />
               <Area type="monotone" dataKey="OnSite" stackId="1" stroke="#82ca9d" fill="#82ca9d" />
               <Area type="monotone" dataKey="Remote" stackId="1" stroke="#ffc658" fill="#ffc658" />
             </AreaChart>

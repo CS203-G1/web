@@ -15,13 +15,13 @@ const EmployeeRosterItem = (props: props) => {
 
 
                 <p className="font-semibold text-gray-500">
-                    {props.name}
+                    { props.name }
                 </p>
             </div>
             {
                 days.map((item, index) => {
                     return (
-                        <EmployeeShiftItem key={index} />
+                        <EmployeeShiftItem key={ index }  />
                     )
                 })
             }
