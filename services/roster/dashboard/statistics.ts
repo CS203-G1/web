@@ -34,7 +34,7 @@ export const getWorkingHistory = async ( accessToken: string ) => {
 }
 
 export const getOnsite = async ( accessToken: string ) => {
-    const res = await axios.get(`${uri}/companies/14f671b0-511e-43e4-86bb-6828f7a8e12d/work-statistics/employees/onsite`, {
+    const res = await axios.get(`${uri}/roster/companies/14f671b0-511e-43e4-86bb-6828f7a8e12d/work-statistics/onsite`, {
         headers: {
             Authorization: `Bearer ${accessToken}`
         }
@@ -47,7 +47,7 @@ export const getOnsite = async ( accessToken: string ) => {
 }
 
 export const getRemoteAndOnsite = async ( accessToken: string ) => {
-    const res = await axios.get(`${uri}/companies/14f671b0-511e-43e4-86bb-6828f7a8e12d/work-statistics/daily`, {
+    const res = await axios.get(`${uri}/roster/companies/14f671b0-511e-43e4-86bb-6828f7a8e12d/work-statistics/daily`, {
         headers: {
             Authorization: `Bearer ${accessToken}`
         }
