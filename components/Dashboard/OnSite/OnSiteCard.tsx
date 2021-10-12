@@ -15,7 +15,7 @@ const OnSiteCard = () => {
             status: "ART Tested",
         },
         {
-            name: "Felice Lelice",
+            name: "Felice Lelice", 
             department: "Product Management",
             status: "PCR Tested",
         },
