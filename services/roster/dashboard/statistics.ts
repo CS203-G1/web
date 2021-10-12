@@ -5,7 +5,7 @@ const uri = process.env.NEXT_PUBLIC_ROSTER_URL
 
 export const getEmployeesSummary = async ( accessToken: string ) => {
 
-    const res = await axios.get<DashboardSummary>(`${uri}/companies/14f671b0-511e-43e4-86bb-6828f7a8e12d/summary/employees`, {
+    const res = await axios.get<DashboardSummary>(`${uri}/roster/companies/14f671b0-511e-43e4-86bb-6828f7a8e12d/work-statistics/summary`, {
         headers: {
             Authorization: `Bearer ${accessToken}`
         }
@@ -21,7 +21,7 @@ export const getEmployeesSummary = async ( accessToken: string ) => {
 }
 
 export const getWorkingHistory = async ( accessToken: string ) => {
-    const res = await axios.get(`${uri}/companies/14f671b0-511e-43e4-86bb-6828f7a8e12d/work-statistics/weekly`, {
+    const res = await axios.get(`${uri}/roster/companies/14f671b0-511e-43e4-86bb-6828f7a8e12d/work-statistics/weekly`, {
         headers: {
             Authorization: `Bearer ${accessToken}`
         }
