@@ -18,14 +18,20 @@ export const getAllEmployees = async ( accessToken: string ) => {
 }
 
 export const getEmployee = async ( accessToken: string, departmentId: string, employeeId: string) => {
-    const res = await axios.get(`${uri}/roster/departments/${departmentId}/employees/${employeeId}`, {
-        headers: {
-            Authorization: `Bearer ${accessToken}`
+    try{
+        const res = await axios.get<Employee>(`${uri}/roster/departments/${departmentId}/employees/${employeeId}`, {
+            headers: {
+                Authorization: `Bearer ${accessToken}`
+            }
+        })
+        if (res.status !== 200) {
+            return []
         }
-    })
-    if (res.status !== 200) {
-        return []
+    
+        return res.data
+    } catch(e) {
+        console.log(e.message);
+        
     }
-
-    return res.data
+    
 }
