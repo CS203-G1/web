@@ -24,7 +24,7 @@ const Navbar = (props:props) => {
                             <UilSearch size={20} />
                         </div>
 
-                        <Link href="/profile">
+                        <Link href="/profile" passHref>
                             <div className="flex flex-row gap-2 items-center cursor-pointer">
                                 <UilUserCircle size={30} />
                                 <p>

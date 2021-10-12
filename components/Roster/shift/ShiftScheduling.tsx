@@ -38,11 +38,11 @@ const ShiftScheduling = () => {
                         +
                     </div>
                 </div>
-                <ShiftItem id="1" position="Shift Manager 1" time_from="0800" time_to="1600" num_assigned={1} num_total={2} />
+                {/* <ShiftItem id="1" position="Shift Manager 1" time_from="0800" time_to="1600" num_assigned={1} num_total={2} />
 
                 <ShiftItem id="1" position="Shift Manager 1" time_from="0800" time_to="1600" num_assigned={1} num_total={2} />
 
-                <ShiftItem id="1" position="Shift Manager 1" time_from="0800" time_to="1600" num_assigned={1} num_total={2} />
+                <ShiftItem id="1" position="Shift Manager 1" time_from="0800" time_to="1600" num_assigned={1} num_total={2} /> */}
             </div>
         </div>
     )

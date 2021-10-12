@@ -2,7 +2,7 @@
 import { UilCheck } from '@iconscout/react-unicons'
 
 interface props {
-    name: string
+    name?: string
     checked: boolean
 }
 

@@ -16,7 +16,6 @@ const ShiftModal = (props: props) => {
         <Modal visible={props.isOpen} title={props.position} onCancel={ props.cancel } onOk={ props.ok }>
             <div className="flex flex-col gap-1">
                 <ShiftEmployeeItem checked={true} />
-                <ShiftEmployeeItem />
             </div>
         </Modal>
 

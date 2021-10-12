@@ -17,9 +17,9 @@ const Employee = () => {
         setEmployeeDetails(res)
     }
 
-    useEffect(() => {
-        employee()
-    }, [])
+    // useEffect(() => {
+    //     employee()
+    // }, [])
 
     return (
         <Layout header="Employee No need wash hands">

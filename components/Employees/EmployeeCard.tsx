@@ -4,6 +4,7 @@ import { Progress } from 'antd'
 import Link from 'next/link'
 import React from 'react'
 import { Employee } from '../../types/Employee/employee'
+import Image from 'next/image'
 
 type dict = {
     [key: string]: string
@@ -17,10 +18,10 @@ const EmployeeCard = (props: Employee) => {
         "Not Tested": "bg-red-500"
     }
     return (
-        <Link href={`/employee/${ props.id }`}>
+        <Link href={`/employee/${ props.id }`} passHref>
             <div className="flex flex-col gap-2 w-72 pt-6 bg-white items-center rounded-lg shadow cursor-pointer transform scale-100 hover:shadow-lg hover:scale-105 duration-300 ease-in-out">
                 <div className="rounded-full h-32 w-32">
-                    <img className="rounded-full object-cover" src="https://picsum.photos/200" alt="" />
+                    <Image className="rounded-full object-cover" src="https://picsum.photos/200" alt="picture" />
                 </div>
                 <h3 className="text-lg font-semibold">
                     { props.name }
