@@ -21,7 +21,7 @@ const EmployeeRosterItem = (props: props) => {
             {
                 days.map((item, index) => {
                     return (
-                        <EmployeeShiftItem key={ index}  />
+                        <EmployeeShiftItem key={ index }  />
                     )
                 })
             }
