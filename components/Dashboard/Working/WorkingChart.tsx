@@ -48,9 +48,7 @@ const WorkingChart = () => {
                 data={data}
             >
                 {
-                    data && data.map((item, index) => {
-                        console.log(item);
-                        
+                    data && data.map((item, index) => {                        
                         return (
                             <>
 
