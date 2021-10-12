@@ -28,7 +28,7 @@ const RequestCard = () => {
                     {
                         data.map((item, index) => {
                             return (
-                                <RequestItem key={index} type={item.type} number={item.number} />
+                                <RequestItem key={ index } type={ item.type } number={ item.number } />
                             )
                         })
                     }

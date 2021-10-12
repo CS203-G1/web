@@ -4,15 +4,15 @@ import { UilSearch, UilBell, UilUserCircle, UilAngleDown } from '@iconscout/reac
 import Link from 'next/link'
 
 interface props {
-    photoUrl: string
+    title: string
 }
 
-const Navbar = () => {
+const Navbar = (props:props) => {
     return(
         <div className="flex-1 flex flex-col">
                 <div className="flex flex-row justify-between items-center w-full px-10 py-4">
                     <h1 className="text-2xl font-semibold">
-                        Dashboard
+                        { props.title }
                     </h1>
 
                     <div className="flex flex-row gap-4 items-center">
@@ -24,7 +24,7 @@ const Navbar = () => {
                             <UilSearch size={20} />
                         </div>
 
-                        <Link href="/profile">
+                        <Link href="/profile" passHref>
                             <div className="flex flex-row gap-2 items-center cursor-pointer">
                                 <UilUserCircle size={30} />
                                 <p>

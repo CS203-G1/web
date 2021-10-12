@@ -1,64 +1,39 @@
-import React, { useState } from "react";
+import { Auth } from "aws-amplify";
+import React, { useEffect, useState } from "react";
 import { PieChart, Pie, Sector, Cell } from "recharts";
+import { getRemoteAndOnsite } from '../../../services/roster/dashboard/statistics'
 
 
 
 const WorkingChart = () => {
-    const data = [
-        { name: 'Remote', value: 400 },
-        { name: 'On-Site', value: 300 },
-    ];
 
-    // const renderActiveShape = (props) => {
-    //     const RADIAN = Math.PI / 180;
-    //     const { cx, cy, midAngle, innerRadius, outerRadius, startAngle, endAngle, fill, payload, percent, value } = props;
-    //     const sin = Math.sin(-RADIAN * midAngle);
-    //     const cos = Math.cos(-RADIAN * midAngle);
-    //     const sx = cx + (outerRadius + 10) * cos;
-    //     const sy = cy + (outerRadius + 10) * sin;
-    //     const mx = cx + (outerRadius + 30) * cos;
-    //     const my = cy + (outerRadius + 30) * sin;
-    //     const ex = mx + (cos >= 0 ? 1 : -1) * 22;
-    //     const ey = my;
-    //     const textAnchor = cos >= 0 ? 'start' : 'end';
 
-    //     return (
-    //         <g>
-    //             <text x={cx} y={cy} dy={8} textAnchor="middle" fill={fill}>
-    //                 {payload.name}
-    //             </text>
-    //             <Sector
-    //                 cx={cx}
-    //                 cy={cy}
-    //                 innerRadius={innerRadius}
-    //                 outerRadius={outerRadius}
-    //                 startAngle={startAngle}
-    //                 endAngle={endAngle}
-    //                 fill="#7c3aed"
-    //             />
-    //             <Sector
-    //                 cx={cx}
-    //                 cy={cy}
-    //                 startAngle={startAngle}
-    //                 endAngle={endAngle}
-    //                 innerRadius={outerRadius + 6}
-    //                 outerRadius={outerRadius + 10}
-    //                 fill="#7c3aed"
-    //             />
-    //             <path d={`M${sx},${sy}L${mx},${my}L${ex},${ey}`} stroke={fill} fill="none" />
-    //             <circle cx={ex} cy={ey} r={2} fill={fill} stroke="none" />
-    //             {/* <text x={ex + (cos >= 0 ? 1 : -1) * 12} y={ey} textAnchor={textAnchor} fill="#333">{`PV ${value}`}</text> */}
-    //             <text x={ex + (cos >= 0 ? 1 : -1) * 12} y={ey} dy={2} textAnchor={textAnchor} fill="#999">
-    //                 {`${(percent * 100).toFixed(2)}%`}
-    //             </text>
-    //         </g>
-    //     );
-    // };
+    const [data, setData] = useState([
+        { name: 'Remote', value: 6 },
+        { name: 'On-Site', value: 7 },
+    ])
+
+    const getData = async () => {
+        const { signInUserSession } = await Auth.currentAuthenticatedUser()
+        const jwt = signInUserSession.accessToken.jwtToken
+        const res = await getRemoteAndOnsite(jwt)
+        let newData = data
+        for (let i = 0; i< 2; i++) {
+            if (i === 0) {
+                newData[i].value = res.remoteCount
+            }else {
+                newData[i].value = res.onsiteCount
+            }
+        }        
+        setData(newData)
+    }
+
+    useEffect(() => {
+        getData()
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
 
     const [activeIndex, setActiveIndex] = useState(0)
-    // const onPieEnter = (_, index) => {
-    //     setActiveIndex(index)
-    // }
 
     const color = ["#a78bfa", "#7c3aed"]
 
@@ -73,11 +48,13 @@ const WorkingChart = () => {
                 data={data}
             >
                 {
-                    data.map((item, index) => {
+                    data && data.map((item, index) => {
+                        console.log(item);
+                        
                         return (
                             <>
 
-                                <Cell key={`cell-${index}`} fill={`${color[index]}`} strokeWidth={index * 4} />
+                                <Cell key={ `cell-${index}` } fill={ `${color[index]}` } strokeWidth={ index * 4}  />
                             </>
                         )
                     })

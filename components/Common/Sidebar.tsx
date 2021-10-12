@@ -5,10 +5,16 @@ import { UisChart } from '@iconscout/react-unicons-solid'
 import { UilComparison, UilCommentDots, UilUserSquare, UilCalendarAlt, UilChartLine, UilSetting, UilQuestionCircle } from '@iconscout/react-unicons'
 import NavigationItem from '../Sidebar/NavigationItem'
 
+interface props {
+    close?: boolean
+}
 
-const Sidebar = () => {
+const Sidebar = (props: props) => {
+
+    const visible = !props.close ? "" : "translate-x-0 visible"
+
     return (
-        <div className="h-screen w-64 bg-blue-900 text-white flex flex-col justify-between">
+        <div className={`h-screen w-64 bg-blue-900 text-white flex flex-col justify-between transform duration-300 ease-in-out ${visible}`}>
 
             <div className="ml-4 my-4">
                 <div className="flex flex-row gap-3 items-center mb-10">
@@ -27,10 +33,10 @@ const Sidebar = () => {
                         <h3 className="text-xs text-blue-300 mb-3">
                             MAIN MENU
                         </h3>
-                        <NavigationItem name="Dashboard">
+                        <NavigationItem name="Dashboard" path="/dashboard">
                             <UisChart />
                         </NavigationItem>
-                        <NavigationItem name="Inbox">
+                        <NavigationItem name="Inbox"  path="/inbox">
                             <UilCommentDots />
                         </NavigationItem>
                     </div>
@@ -39,13 +45,13 @@ const Sidebar = () => {
                         <h3 className="text-xs text-blue-300 mb-3">
                             WORKSPACE
                         </h3>
-                        <NavigationItem name="Roster">
+                        <NavigationItem name="Roster"  path="/roster">
                             <UilCalendarAlt />
                         </NavigationItem>
-                        <NavigationItem name="Employees">
+                        <NavigationItem name="Employees" path="/employees">
                             <UilUserSquare />
                         </NavigationItem>
-                        <NavigationItem name="Analytics">
+                        <NavigationItem name="Analytics" path="/analytics">
                             <UilChartLine />
                         </NavigationItem>
                     </div>
@@ -54,7 +60,7 @@ const Sidebar = () => {
                         <h3 className="text-xs text-blue-300 mb-3">
                             General
                         </h3>
-                        <NavigationItem name="Settings">
+                        <NavigationItem name="Settings" path="/settings">
                             <UilSetting />
                         </NavigationItem>
                     </div>

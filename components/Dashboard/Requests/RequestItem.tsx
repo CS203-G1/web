@@ -12,12 +12,12 @@ const RequestItem = (props:props) => {
             <div className="flex flex-row gap-1 items-center text-gray-400">
                 <UilUser />
                 <h1 className="text-sm text-gray-500">
-                    {props.type}
+                    { props.type }
                 </h1>
             </div>
 
             <div className="font-bold">
-                {props.number}
+                { props.number }
             </div>
         </div>
     )

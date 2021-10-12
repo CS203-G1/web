@@ -11,7 +11,7 @@ import OnSiteCard from '../components/Dashboard/OnSite/OnSiteCard'
 
 const Dashboard = () => {
     return (
-        <Layout>
+        <Layout header="Dashboard">
             <div className="flex flex-col gap-6 w-full">
                 <Activity />
                 <div className="flex flex-row flex-wrap gap-3">

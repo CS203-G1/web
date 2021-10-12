@@ -1,73 +1,49 @@
-import React from "react";
+import { Auth } from "aws-amplify";
+import React, { useEffect, useState } from "react";
 import { Bar, BarChart, CartesianGrid, Legend, Tooltip, XAxis, YAxis } from "recharts";
+import { getWorkingHistory } from '../../../services/roster/dashboard/statistics'
 
 const AttendanceChart = () => {
-    const data = [
-        {
-          name: 'Page A',
-          uv: 4000,
-          pv: 2400,
-          amt: 2400,
-        },
-        {
-          name: 'Page B',
-          uv: 3000,
-          pv: 1398,
-          amt: 2210,
-        },
-        {
-          name: 'Page C',
-          uv: 2000,
-          pv: 9800,
-          amt: 2290,
-        },
-        {
-          name: 'Page D',
-          uv: 2780,
-          pv: 3908,
-          amt: 2000,
-        },
-        {
-          name: 'Page E',
-          uv: 1890,
-          pv: 4800,
-          amt: 2181,
-        },
-        {
-          name: 'Page F',
-          uv: 2390,
-          pv: 3800,
-          amt: 2500,
-        },
-        {
-          name: 'Page G',
-          uv: 3490,
-          pv: 4300,
-          amt: 2100,
-        },
-      ];
-    return (
-        <BarChart
-          width={500}
-          height={300}
-          data={data}
-          margin={{
-            top: 5,
-            right: 0,
-            left: 0,
-            bottom: 5,
-          }}
-          barCategoryGap="20%"
-        >
-          {/* <CartesianGrid strokeDasharray="3 3" /> */}
-          <XAxis dataKey="name" axisLine={false} tickLine={false} />
-          <YAxis axisLine={false} tickLine={false} />
-          <Tooltip />
-          <Legend iconType="circle" />
-          <Bar dataKey="pv" fill="#8884d8" />
-          <Bar dataKey="uv" fill="#82ca9d" />
-        </BarChart>
-    )
+  const [data, setData] = useState()
+
+  const ticks = ["Mon", "Tues", "Wed", "Thurs", "Fri", "Sat", "Sun"]
+
+  const getData = async () => {
+    const { signInUserSession } = await Auth.currentAuthenticatedUser()
+    const jwt = signInUserSession.accessToken.jwtToken
+    let res = await getWorkingHistory(jwt)
+    for (let i = 0; i< 7; i++) {
+      res[i].day = ticks[i]
+    }
+    setData(res)
+  }
+
+  useEffect(() => {
+    getData()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
+  return (
+    <BarChart
+      width={500}
+      height={300}
+      data={data}
+      margin={{
+        top: 5,
+        right: 0,
+        left: 0,
+        bottom: 5,
+      }}
+      barCategoryGap="20%"
+    >
+      <XAxis dataKey="day" axisLine={false} tickLine={false} />
+      <YAxis axisLine={false} tickLine={false} />
+      <Tooltip />
+      <Legend iconType="circle" />
+      <Bar dataKey="onsiteCount" fill="#8884d8" />
+      <Bar dataKey="remoteCount" fill="#82ca9d" />
+    </BarChart>
+  )
 }
 
 export default AttendanceChart

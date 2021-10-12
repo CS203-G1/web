@@ -14,7 +14,7 @@ const WorkingCard = () => {
                             Total
                             </div>
                         <div className="font-bold text-xl">
-                            123
+                            13
                             </div>
                     </div>
                 </div>
