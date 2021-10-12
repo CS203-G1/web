@@ -29,7 +29,7 @@ const OnSiteCard = () => {
     //     },
     // ]
 
-    const [data, setData] = useState()
+    const [data, setData] = useState<any>()
 
     const getData = async () => {
         const { signInUserSession } = await Auth.currentAuthenticatedUser()
@@ -59,7 +59,7 @@ const OnSiteCard = () => {
             </div>
 
             {
-                data && data.map((item, index) => {
+                data && data.map((item: any, index: any) => {
                     return (
                         <EmployeesOnSite name={item?.name} department={item?.department?.name} status={item.healthStatus} />
                     )
