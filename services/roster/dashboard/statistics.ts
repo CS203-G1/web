@@ -1,7 +1,7 @@
 import axios from 'axios'
 import { DashboardSummary }from '../../../types/dashboard/summary'
 
-const uri = process.env.NEXT_PUBLIC_ROSTER_URL
+const uri = "https://ba8cm5du31.execute-api.ap-southeast-1.amazonaws.com/dev"
 
 export const getEmployeesSummary = async ( accessToken: string ) => {
 
