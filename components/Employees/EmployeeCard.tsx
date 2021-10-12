@@ -21,7 +21,7 @@ const EmployeeCard = (props: Employee) => {
         <Link href={`/employee/${ props.id }`} passHref>
             <div className="flex flex-col gap-2 w-72 pt-6 bg-white items-center rounded-lg shadow cursor-pointer transform scale-100 hover:shadow-lg hover:scale-105 duration-300 ease-in-out">
                 <div className="rounded-full h-32 w-32">
-                    <Image className="rounded-full object-cover" src="https://picsum.photos/200" alt="picture" />
+                    <Image className="rounded-full object-cover" src="https://picsum.photos/200" alt="picture" layout="responsive" />
                 </div>
                 <h3 className="text-lg font-semibold">
                     { props.name }

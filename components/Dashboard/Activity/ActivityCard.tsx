@@ -9,7 +9,7 @@ interface props {
 
 const ActivityCard = (props: props) => {
     const graph = props.change > 0 ? <UilArrowGrowth /> : <UilChartDown />
-    const graphColor = props.change > 0 ? "green" : "red"
+    const graphColor = props.change > 0 ? "text-green-500" : "text-red-500"
 
     return (
         <div className={`card bg-white flex-1 flex flex-col gap-3`}>
@@ -22,7 +22,7 @@ const ActivityCard = (props: props) => {
                     { props.value }
                 </div>
 
-                <div className={`flex items-center text-${graphColor}-500`}>
+                <div className={`flex items-center ${graphColor}`}>
                     <span className="text-sm">
                         { props.change }%
                     </span>
