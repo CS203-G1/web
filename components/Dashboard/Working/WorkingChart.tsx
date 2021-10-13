@@ -9,15 +9,15 @@ const WorkingChart = () => {
 
 
     const [data, setData] = useState([
-        { name: 'Remote', value: 6 },
-        { name: 'On-Site', value: 7 },
+        { name: 'Remote', value: 0 },
+        { name: 'On-Site', value: 0 },
     ])
 
     const getData = async () => {
         const { signInUserSession } = await Auth.currentAuthenticatedUser()
         const jwt = signInUserSession.accessToken.jwtToken
         const res = await getRemoteAndOnsite(jwt)
-        let newData = data
+        const newData = [...data]
         for (let i = 0; i< 2; i++) {
             if (i === 0) {
                 newData[i].value = res.remoteCount
@@ -51,7 +51,6 @@ const WorkingChart = () => {
                     data && data.map((item, index) => {                        
                         return (
                             <>
-
                                 <Cell key={ `cell-${index}` } fill={ `${color[index]}` } strokeWidth={ index * 4}  />
                             </>
                         )

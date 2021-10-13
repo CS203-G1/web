@@ -27,7 +27,7 @@ const Employee = () => {
 
     return (
         <Layout header={ employeeDetails?.name as string }>
-            <div>
+            <div className="flex flex-wrap">
                 
             </div>
         </Layout>

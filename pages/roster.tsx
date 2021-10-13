@@ -31,7 +31,7 @@ const Roster = () => {
     </Menu>)
 
     return (
-        <Layout header="Roster Imum Occupancy 120">
+        <Layout header="Roster">
             <div className="flex flex-col gap-10">
 
                 <div>

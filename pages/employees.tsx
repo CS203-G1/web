@@ -31,7 +31,7 @@ const Employees = () => {
     return (
         <>
             <AddEmployeeModal visible={addEmployeeModal} handleCancel={handleModalCancel} handleOk={handleModalOk} />
-            <Layout header="Employees Must Wash Hands">
+            <Layout header="Employees">
                 <div className="flex flex-row justify-between border-b">
                     <div className="flex flex-row gap-10">
                         <span className="font-bold py-3 cursor-pointer border-b-4 border-blue-400">
