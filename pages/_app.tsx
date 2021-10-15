@@ -7,6 +7,7 @@ import awsconfig from '../src/aws-exports';
 import type { AppProps } from 'next/app'
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { Router, useRouter } from 'next/router';
+import { AuthLuth } from '../components/Authentication/AuthLuth';
 
 function MyApp({ Component, pageProps }: AppProps) {
   const router = useRouter()
@@ -15,7 +16,9 @@ function MyApp({ Component, pageProps }: AppProps) {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <Component {...pageProps} />
+      <AuthLuth>
+        <Component {...pageProps} />
+      </AuthLuth>
     </QueryClientProvider>
   )
 }
