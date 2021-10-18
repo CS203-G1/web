@@ -18,8 +18,10 @@ const AuthLuth = (props: props) => {
 
         Auth.currentAuthenticatedUser().then( user => {
             console.log(user);
+
+            const group = user.signInUserSession.accessToken.payload["cognito:groups"]
             
-            redirectAwayAuthenticated(pathname)
+            redirectAwayAuthenticated(pathname, group)
             return 
         }).catch( err => {
             redirectAwayUnauthenticated(pathname)
@@ -27,8 +29,11 @@ const AuthLuth = (props: props) => {
 
     }, [])
 
-    const redirectAwayAuthenticated = ( pathname:string ) => {
-        if (unauthenticated.includes(pathname)) {
+    const redirectAwayAuthenticated = ( pathname:string, group:string[] ) => {
+        if (!group.includes('ROLE_EMPLOYER') && unauthenticated.includes(pathname)) {
+            router.push('/user')
+        }
+        else if (unauthenticated.includes(pathname)) {
             router.push('/dashboard')
         }
     }
