@@ -15,7 +15,7 @@ const UserLogin = () => {
     const login = async () => {
         try {
             const res = await Auth.signIn(email, password)
-            router.push("/dashboard")
+            router.push("/user/dashboard")
 
         } catch (e) {
         }
