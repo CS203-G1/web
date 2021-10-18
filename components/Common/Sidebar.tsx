@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 // @ts-ignore
 import { UisChart } from '@iconscout/react-unicons-solid'
 // @ts-ignore
-import { UilComparison, UilCommentDots, UilUserSquare, UilCalendarAlt, UilChartLine, UilSetting, UilQuestionCircle } from '@iconscout/react-unicons'
+import { UilComparison, UilCommentDots, UilUserSquare, UilCalendarAlt, UilChartLine, UilSetting, UilQuestionCircle, UilFileUploadAlt } from '@iconscout/react-unicons'
 import NavigationItem from '../Sidebar/NavigationItem'
 import { Auth } from 'aws-amplify'
 import { useRouter } from 'next/router'
@@ -27,7 +27,7 @@ const Sidebar = (props: props) => {
     })
 
     const navItems = admin ?
-        // ADMIN SIDEBAR
+        // !ADMIN SIDEBAR
         <div className="flex flex-col gap-4">
             <div className="flex flex-col">
                 <h3 className="text-xs text-blue-300 mb-3">
@@ -66,7 +66,7 @@ const Sidebar = (props: props) => {
             </div>
         </div>
         : 
-        // USER SIDEBAR
+        // !USER SIDEBAR
         <div className="flex flex-col gap-4">
 
         <div className="flex flex-col">
@@ -78,6 +78,9 @@ const Sidebar = (props: props) => {
             </NavigationItem>
             <NavigationItem name="Inbox" path="/inbox">
                 <UilCommentDots />
+            </NavigationItem>
+            <NavigationItem name="Test Upload" path="/inbox">
+                <UilFileUploadAlt />
             </NavigationItem>
         </div>
 
