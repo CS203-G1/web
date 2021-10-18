@@ -79,7 +79,7 @@ const Sidebar = (props: props) => {
             <NavigationItem name="Inbox" path="/inbox">
                 <UilCommentDots />
             </NavigationItem>
-            <NavigationItem name="Test Upload" path="/inbox">
+            <NavigationItem name="Test Upload" path="/user/document-upload">
                 <UilFileUploadAlt />
             </NavigationItem>
         </div>
