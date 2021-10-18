@@ -26,7 +26,6 @@ const ThorLhor = (props: props) => {
             router.push("/user")
         }
     }
-    
 
     return (
         props.children
