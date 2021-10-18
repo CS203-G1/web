@@ -83,21 +83,6 @@ const Sidebar = (props: props) => {
 
         <div className="flex flex-col">
             <h3 className="text-xs text-blue-300 mb-3">
-                WORKSPACE
-            </h3>
-            <NavigationItem name="Roster" path="/roster">
-                <UilCalendarAlt />
-            </NavigationItem>
-            <NavigationItem name="Employees" path="/employees">
-                <UilUserSquare />
-            </NavigationItem>
-            <NavigationItem name="Analytics" path="/analytics">
-                <UilChartLine />
-            </NavigationItem>
-        </div>
-
-        <div className="flex flex-col">
-            <h3 className="text-xs text-blue-300 mb-3">
                 General
             </h3>
             <NavigationItem name="Settings" path="/settings">
