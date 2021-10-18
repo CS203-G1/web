@@ -25,7 +25,7 @@ const EmployeeCard = (props: Employee) => {
                     { props.name }
                 </h3>
                 <p className="text-gray-500 font-semi-bold">
-                    { props.email }
+                    { props.name.replace(/\s/g, '').toLowerCase() + "@dash.com" }
                 </p>
                 <div className="flex flex-row gap-2 items-center">
                     <span className={`p-1 ${color[props.status]} rounded-full`}></span>

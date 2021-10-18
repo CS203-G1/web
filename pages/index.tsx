@@ -46,7 +46,7 @@ const Home: NextPage = () => {
                         </div>
                     </Link>
 
-                    <Link href="/employee-login" passHref>
+                    <Link href="/user" passHref>
                         <div className="bg-white flex flex-row justify-between items-center px-4 py-4 rounded-lg w-96 border border-white hover:border-blue-400 hover:bg-blue-100 cursor-pointer role-card">
                             <div className="flex flex-row items-center gap-4">
                                 <div className="p-2 border rounded-md bg-blue-500 text-white">
