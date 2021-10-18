@@ -17,6 +17,8 @@ const AuthLuth = (props: props) => {
         const pathname = router.pathname
 
         Auth.currentAuthenticatedUser().then( user => {
+            console.log(user);
+            
             redirectAwayAuthenticated(pathname)
             return 
         }).catch( err => {

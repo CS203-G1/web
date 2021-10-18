@@ -4,6 +4,8 @@ import { UisChart } from '@iconscout/react-unicons-solid'
 // @ts-ignore
 import { UilComparison, UilCommentDots, UilUserSquare, UilCalendarAlt, UilChartLine, UilSetting, UilQuestionCircle } from '@iconscout/react-unicons'
 import NavigationItem from '../Sidebar/NavigationItem'
+import { Auth } from 'aws-amplify'
+import { useRouter } from 'next/router'
 
 interface props {
     close?: boolean
@@ -12,6 +14,7 @@ interface props {
 const Sidebar = (props: props) => {
 
     const visible = !props.close ? "" : "translate-x-0 visible"
+    const router = useRouter()
 
     return (
         <div className={`h-screen w-64 bg-blue-900 text-white flex flex-col justify-between transform duration-300 ease-in-out ${visible}`}>
@@ -76,7 +79,15 @@ const Sidebar = (props: props) => {
                     Need help with Dash?
                 </p>
 
-                <button className="bg-blue-600 w-full px-3 py-2 rounded-md">
+                <button className="bg-blue-600 w-full px-3 py-2 rounded-md"
+                onClick={async () => {
+                    try{
+                        await Auth.signOut
+                        router.push("/")
+                    } catch (e) {
+                        console.log(e);
+                    }
+                }}>
                     Go to help center
                 </button>
             </div>

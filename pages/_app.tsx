@@ -8,6 +8,7 @@ import type { AppProps } from 'next/app'
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { Router, useRouter } from 'next/router';
 import { AuthLuth } from '../components/Authentication/AuthLuth';
+import {  ThorLhor } from '../components/Authorisation/ThorLhor'
 
 function MyApp({ Component, pageProps }: AppProps) {
   const router = useRouter()
@@ -16,9 +17,11 @@ function MyApp({ Component, pageProps }: AppProps) {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <AuthLuth>
-        <Component {...pageProps} />
-      </AuthLuth>
+      <ThorLhor>
+        <AuthLuth>
+          <Component {...pageProps} />
+        </AuthLuth>
+      </ThorLhor>
     </QueryClientProvider>
   )
 }
