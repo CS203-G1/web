@@ -108,7 +108,7 @@ const Sidebar = (props: props) => {
                     </h1>
                 </div>
 
-                {navItems}
+                { navItems }
             </div>
 
             <div className="flex flex-col gap-4 items-center rounded-md mx-4 p-7 mb-10 justyify-center bg-blue-800 relative">
