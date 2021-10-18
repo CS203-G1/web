@@ -27,8 +27,8 @@ const Sidebar = (props: props) => {
     })
 
     const navItems = admin ?
+        // ADMIN SIDEBAR
         <div className="flex flex-col gap-4">
-
             <div className="flex flex-col">
                 <h3 className="text-xs text-blue-300 mb-3">
                     MAIN MENU
@@ -65,7 +65,9 @@ const Sidebar = (props: props) => {
                 </NavigationItem>
             </div>
         </div>
-        : <div className="flex flex-col gap-4">
+        : 
+        // USER SIDEBAR
+        <div className="flex flex-col gap-4">
 
         <div className="flex flex-col">
             <h3 className="text-xs text-blue-300 mb-3">
