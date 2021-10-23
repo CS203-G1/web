@@ -11,7 +11,7 @@ const DocumentUpload = () => {
         name: 'file',
         multiple: true,
         action: 'https://www.mocky.io/v2/5cc8019d300000980a055e76',
-        onChange(info) {
+        onChange(info: any) {
             const { status } = info.file;
             if (status !== 'uploading') {
                 console.log(info.file, info.fileList);
@@ -22,7 +22,7 @@ const DocumentUpload = () => {
                 message.error(`${info.file.name} file upload failed.`);
             }
         },
-        onDrop(e) {
+        onDrop(e: any) {
             console.log('Dropped files', e.dataTransfer.files);
         },
     };
