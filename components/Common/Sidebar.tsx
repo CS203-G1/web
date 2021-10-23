@@ -73,7 +73,7 @@ const Sidebar = (props: props) => {
             <h3 className="text-xs text-blue-300 mb-3">
                 MAIN MENU
             </h3>
-            <NavigationItem name="Dashboard" path="/dashboard">
+            <NavigationItem name="Dashboard" path="/user/dashboard">
                 <UisChart />
             </NavigationItem>
             <NavigationItem name="Inbox" path="/inbox">
