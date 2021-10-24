@@ -25,6 +25,7 @@
     "react-dom": "17.0.2",
     "react-hook-form": "^7.17.4",
     "react-query": "^3.21.0",
+    "react-tinder-card": "^1.4.4",
     "recharts": "^2.1.4",
     "storyboard": "^3.3.2",
     "tailwindcss": "^2.2.7",

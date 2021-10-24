@@ -54,7 +54,7 @@ const Sidebar = (props: props) => {
                 <NavigationItem name="Analytics" path="/analytics">
                     <UilChartLine />
                 </NavigationItem>
-                <NavigationItem name="Tests" path="/analytics">
+                <NavigationItem name="Tests" path="/tests">
                     <UilStethoscope />
                 </NavigationItem>
             </div>
