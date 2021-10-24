@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 // @ts-ignore
 import { UisChart } from '@iconscout/react-unicons-solid'
 // @ts-ignore
-import { UilComparison, UilCommentDots, UilUserSquare, UilCalendarAlt, UilChartLine, UilSetting, UilQuestionCircle, UilFileUploadAlt } from '@iconscout/react-unicons'
+import { UilStethoscope, UilComparison, UilCommentDots, UilUserSquare, UilCalendarAlt, UilChartLine, UilSetting, UilQuestionCircle, UilFileUploadAlt } from '@iconscout/react-unicons'
 import NavigationItem from '../Sidebar/NavigationItem'
 import { Auth } from 'aws-amplify'
 import { useRouter } from 'next/router'
@@ -18,9 +18,9 @@ const Sidebar = (props: props) => {
     const [admin, setAdmin] = useState(false)
 
     useEffect(() => {
-        Auth.currentAuthenticatedUser().then(user => {
+        Auth.currentAuthenticatedUser().then(user => {            
             const group = user.signInUserSession.accessToken.payload["cognito:groups"]
-            if (group == "ROLE_ADMIN") {
+            if (group.includes("ROLE_EMPLOYER")) {
                 setAdmin(true)
             }
         })
@@ -53,6 +53,9 @@ const Sidebar = (props: props) => {
                 </NavigationItem>
                 <NavigationItem name="Analytics" path="/analytics">
                     <UilChartLine />
+                </NavigationItem>
+                <NavigationItem name="Tests" path="/analytics">
+                    <UilStethoscope />
                 </NavigationItem>
             </div>
 
