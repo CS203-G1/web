@@ -98,7 +98,7 @@ const Sidebar = (props: props) => {
     </div>
 
     return (
-        <div className={`h-screen w-64 bg-blue-900 text-white flex flex-col justify-between transform duration-300 ease-in-out ${visible}`}>
+        <div className={`h-full w-64 bg-blue-900 text-white flex flex-col justify-between transform duration-300 ease-in-out ${visible}`}>
 
             <div className="ml-4 my-4">
                 <div className="flex flex-row gap-3 items-center mb-10">

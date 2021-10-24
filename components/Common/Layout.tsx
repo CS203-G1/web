@@ -10,11 +10,11 @@ interface props {
 
 const Layout = (props:props) => {
     return (
-        <div className="min-h-screen w-full bg-gray-100 flex flex-row overflow-auto">
+        <div className="h-screen w-full bg-gray-100 flex flex-row overflow-auto">
             <Sidebar close={ props.sidebar } />
-            <div className="flex-1 overflow-auto h-screen">
+            <div className="flex flex-col flex-1 overflow-auto">
                 <Navbar title={ props.header } />
-                <div className={ !props.sidebar ? `py-4 px-10`: "px-2" }>
+                <div className={ !props.sidebar ? `py-4 px-10 flex-1`: "px-2" }>
                     { props.children }
                 </div>
             </div>
