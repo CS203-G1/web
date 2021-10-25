@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react"
 import Layout from "../components/Common/Layout"
 import TinderCard from 'react-tinder-card'
+import TestApprovalItem from "../components/Tests/TestApprovalItem"
 
 const Tests = () => {
 
@@ -30,15 +31,11 @@ const Tests = () => {
     }, [])
     return (
         <Layout header="Tests">
-            <div className="relative h-full flex flex-col items-center justify-center">
+            <div className="grid 2xl:grid-cols-4 xl:grid-cols-3 lg:grid-cols-2 justify-evenly gap-10 py-6">
                 {
                     tests && tests.map((item, index) => {
                         return (
-                            <TinderCard className="absolute">
-                                <div className="h-96">
-                                    <img src={item.photoUrl} alt=""/>
-                                </div>
-                            </TinderCard>
+                            <TestApprovalItem />
                         )
                     })
                 }

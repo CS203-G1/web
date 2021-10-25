@@ -13,3 +13,11 @@ export const addArt = async ( accessToken: string, employeeId: string, file: Fil
         }
     })
 }
+
+export const getArt = async () => {
+    
+}
+
+export const processArt = async ( accessToken: string, artId: string ) => {
+
+}
