@@ -29,8 +29,8 @@ export const getArts = async (accessToken: string) => {
 
 export const processArt = async ( accessToken: string, artId: string, HeathStatus: string, RequestStatus: string ) => {
     await axios.put(`http://localhost:8080/requests/art-request/${artId}`, {
-        HeathStatus,
-        RequestStatus,
+        heathStatus: HeathStatus,
+        requestStatus: RequestStatus,
     }, {
         headers: {
             Authorization: `Bearer ${accessToken}`

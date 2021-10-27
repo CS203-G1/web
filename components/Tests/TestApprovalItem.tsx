@@ -40,7 +40,12 @@ const TestApprovalItem = (props: props) => {
     const onOk = async () => {
         const { signInUserSession } = await Auth.currentAuthenticatedUser()
         const jwt = signInUserSession.accessToken.jwtToken
-        await processArt(jwt, props.artId, 'HEALTHY', 'APPROVED')
+        if (status == RequestStatus.APPROVED) {
+            await processArt(jwt, props.artId, 'HEALTHY', 'APPROVED')
+        } else{
+            await processArt(jwt, props.artId, 'ILL', 'REJECTED')
+        }
+        setModalVisible(false)
     }
 
     const process = async () => {
