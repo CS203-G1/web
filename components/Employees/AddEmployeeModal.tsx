@@ -37,10 +37,12 @@ const AddEmployeeModal = (props: props) => {
         const name = getValues('name')
         const email = getValues('email')
 
-        const { user } = await Auth.signUp({
-            username: email,
-            password: "Password123~:)hehexd",
-        })
+        // const { user } = await Auth.signUp({
+        //     username: email,
+        //     password: "Password123~:)hehexd",
+        // })
+        // console.log(user);
+        
         // await addEmployee(jwt, ...register("name"))
     }
 
