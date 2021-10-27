@@ -2,7 +2,7 @@ import { Auth } from 'aws-amplify'
 import { useRouter } from 'next/router'
 import React, { useEffect, useState } from 'react'
 import Layout from '../../components/Common/Layout'
-import { getEmployee } from '../../services/employees/employees'
+import { getEmployee } from '../../services/roster/employee/employees'
 import { Employee as EmployeeType } from '../../types/Employee/employee'
 
 const Employee = () => {
