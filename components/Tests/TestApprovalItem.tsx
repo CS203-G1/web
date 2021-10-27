@@ -9,6 +9,7 @@ interface props {
     artId: string
     employeeId: string
     employeeName: string
+    refresh: () => void
 }
 
 enum RequestStatus {
@@ -45,6 +46,7 @@ const TestApprovalItem = (props: props) => {
         } else{
             await processArt(jwt, props.artId, 'ILL', 'REJECTED')
         }
+        props.refresh()
         setModalVisible(false)
     }
 

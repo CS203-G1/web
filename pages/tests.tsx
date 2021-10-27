@@ -8,27 +8,17 @@ import { Auth } from "aws-amplify"
 
 const Tests = () => {
 
-    const [tests, setTests] = useState([
-        {
-            photoUrl: "https://picsum.photos/200",
-        },
-        {
-            photoUrl: "https://picsum.photos/200",
-        },
-        {
-            photoUrl: "https://picsum.photos/200",
-        },
-        {
-            photoUrl: "https://picsum.photos/200",
-        },
-        {
-            photoUrl: "https://picsum.photos/200",
-        },
-        {
-            photoUrl: "https://picsum.photos/200",
-        },
-    ])
     const [data, setData] = useState<ArtItem[]>([])
+
+    const refreshData = async () => {
+        Auth.currentAuthenticatedUser().then(user => {
+            const jwt = user.signInUserSession.accessToken.jwtToken
+            getArts(jwt).then(res => {
+                setData(res)
+            })
+        })
+    }
+
     useEffect(() => {
         Auth.currentAuthenticatedUser().then(user => {
             const jwt = user.signInUserSession.accessToken.jwtToken
@@ -47,7 +37,8 @@ const Tests = () => {
                                 photourl={"https://picsum.photos/200"}
                                 artId={item.id}
                                 employeeId={item.employee.id}
-                                employeeName={item.employee.name} />
+                                employeeName={item.employee.name}
+                                refresh={refreshData} />
                         )
                     })
                 }
