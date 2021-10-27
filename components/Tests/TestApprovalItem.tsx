@@ -1,10 +1,14 @@
 import Image from 'next/image'
 import { Modal } from 'antd'
 import { useState } from 'react'
+import { processArt } from '../../services/roster/art/Art'
+import { Auth } from 'aws-amplify'
 
 interface props {
-    photourl?: string
+    photourl: string
     artId: string
+    employeeId: string
+    employeeName: string
 }
 
 enum RequestStatus {
@@ -13,7 +17,7 @@ enum RequestStatus {
     APPROVED
 }
 
-const TestApprovalItem = () => {
+const TestApprovalItem = (props: props) => {
 
     const [modalVisible, setModalVisible] = useState(false)
     const [status, setStatus] = useState(RequestStatus.PENDING)
@@ -33,13 +37,19 @@ const TestApprovalItem = () => {
         setModalVisible(false)
     }
 
+    const onOk = async () => {
+        const { signInUserSession } = await Auth.currentAuthenticatedUser()
+        const jwt = signInUserSession.accessToken.jwtToken
+        await processArt(jwt, props.artId, 'HEALTHY', 'APPROVED')
+    }
+
     const process = async () => {
 
     }
 
     return (
         <>
-            <Modal visible={modalVisible} onCancel={cancelOperation} footer={null}>
+            <Modal visible={modalVisible} onCancel={cancelOperation} onOk={onOk}>
                 <div className="w-full flex flex-col items-center gap-6">
                     <h1 className="text-xl">
                         You are now
@@ -49,6 +59,7 @@ const TestApprovalItem = () => {
                         this test request
                     </h1>
                     <Image className="object-cover" height={200} width={200} src="https://picsum.photos/200" alt="picture" />
+                    <p>{props.employeeName}</p>
                 </div>
 
 

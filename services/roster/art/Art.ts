@@ -14,10 +14,26 @@ export const addArt = async ( accessToken: string, employeeId: string, file: Fil
     })
 }
 
-export const getArt = async () => {
-    
+export const getArts = async (accessToken: string) => {
+    const res = await axios.get(`http://localhost:8080/companies/${"14f671b0-511e-43e4-86bb-6828f7a8e12d"}/requests/art-request/PENDING`, {
+        headers: {
+            Authorization: `Bearer ${accessToken}`
+        }
+    })
+
+    if (res.status != 200) {
+        return []
+    }
+    return res.data
 }
 
-export const processArt = async ( accessToken: string, artId: string ) => {
-
+export const processArt = async ( accessToken: string, artId: string, HeathStatus: string, RequestStatus: string ) => {
+    await axios.put(`http://localhost:8080/requests/art-request/${artId}`, {
+        HeathStatus,
+        RequestStatus,
+    }, {
+        headers: {
+            Authorization: `Bearer ${accessToken}`
+        }
+    })
 }
