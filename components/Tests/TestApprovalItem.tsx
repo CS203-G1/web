@@ -66,7 +66,7 @@ const TestApprovalItem = (props: props) => {
                         this test request
                     </h1>
                     <Image className="object-cover" height={200} width={200} src="https://picsum.photos/200" alt="picture" />
-                    <p>{props.employeeName}</p>
+                    <p className="text-xl">This test belongs to {props.employeeName}</p>
                 </div>
 
 
