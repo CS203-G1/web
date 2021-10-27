@@ -12,24 +12,27 @@ const AuthLuth = (props: props) => {
     const router = useRouter()
 
     const unauthenticated = ['/', '/admin-login', '/employee-login']
+
+    const commonPath = ['/settings']
     
     useEffect(() => {
         const pathname = router.pathname
 
         Auth.currentAuthenticatedUser().then( user => {
-            console.log(user);
-
             const group = user.signInUserSession.accessToken.payload["cognito:groups"]
             
             redirectAwayAuthenticated(pathname, group)
             return 
-        }).catch( err => {
+        }).catch( () => {
             redirectAwayUnauthenticated(pathname)
         })
 
     }, [])
 
     const redirectAwayAuthenticated = ( pathname:string, group:string[] ) => {
+        if (commonPath.includes(pathname)) {
+            return 
+        }
         if (!group.includes('ROLE_EMPLOYER') && unauthenticated.includes(pathname)) {
             router.push('/user')
         }

@@ -9,7 +9,7 @@ interface props {
 
 const Navbar = (props:props) => {
     return(
-        <div className="flex-1 flex flex-col">
+        <div className="flex flex-col">
                 <div className="flex flex-row justify-between items-center w-full px-10 py-4">
                     <h1 className="text-2xl font-semibold">
                         { props.title }

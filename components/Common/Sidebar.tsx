@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 // @ts-ignore
 import { UisChart } from '@iconscout/react-unicons-solid'
 // @ts-ignore
-import { UilComparison, UilCommentDots, UilUserSquare, UilCalendarAlt, UilChartLine, UilSetting, UilQuestionCircle, UilFileUploadAlt } from '@iconscout/react-unicons'
+import { UilStethoscope, UilComparison, UilCommentDots, UilUserSquare, UilCalendarAlt, UilChartLine, UilSetting, UilQuestionCircle, UilFileUploadAlt } from '@iconscout/react-unicons'
 import NavigationItem from '../Sidebar/NavigationItem'
 import { Auth } from 'aws-amplify'
 import { useRouter } from 'next/router'
@@ -18,9 +18,9 @@ const Sidebar = (props: props) => {
     const [admin, setAdmin] = useState(false)
 
     useEffect(() => {
-        Auth.currentAuthenticatedUser().then(user => {
+        Auth.currentAuthenticatedUser().then(user => {            
             const group = user.signInUserSession.accessToken.payload["cognito:groups"]
-            if (group == "ROLE_ADMIN") {
+            if (group.includes("ROLE_EMPLOYER")) {
                 setAdmin(true)
             }
         })
@@ -54,6 +54,9 @@ const Sidebar = (props: props) => {
                 <NavigationItem name="Analytics" path="/analytics">
                     <UilChartLine />
                 </NavigationItem>
+                <NavigationItem name="Tests" path="/tests">
+                    <UilStethoscope />
+                </NavigationItem>
             </div>
 
             <div className="flex flex-col">
@@ -73,13 +76,13 @@ const Sidebar = (props: props) => {
             <h3 className="text-xs text-blue-300 mb-3">
                 MAIN MENU
             </h3>
-            <NavigationItem name="Dashboard" path="/dashboard">
+            <NavigationItem name="Dashboard" path="/user/dashboard">
                 <UisChart />
             </NavigationItem>
             <NavigationItem name="Inbox" path="/inbox">
                 <UilCommentDots />
             </NavigationItem>
-            <NavigationItem name="Test Upload" path="/inbox">
+            <NavigationItem name="Test Upload" path="/user/document-upload">
                 <UilFileUploadAlt />
             </NavigationItem>
         </div>
@@ -95,7 +98,7 @@ const Sidebar = (props: props) => {
     </div>
 
     return (
-        <div className={`h-screen w-64 bg-blue-900 text-white flex flex-col justify-between transform duration-300 ease-in-out ${visible}`}>
+        <div className={`h-full w-64 bg-blue-900 text-white flex flex-col justify-between transform duration-300 ease-in-out ${visible}`}>
 
             <div className="ml-4 my-4">
                 <div className="flex flex-row gap-3 items-center mb-10">
