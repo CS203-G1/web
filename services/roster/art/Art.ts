@@ -1,7 +1,7 @@
 import axios from "axios"
 
 // const uri = process.env.NEXT_PUBLIC_ROSTER_URL
-const uri = "http://localhost:8080"
+const uri = process.env.NEXT_PUBLIC_LOCAL_ROSTER_URL
 
 export const addArt = async ( accessToken: string, employeeId: string, file: File ) => {
     const formData = new FormData()
