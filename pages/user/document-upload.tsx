@@ -61,7 +61,7 @@ const DocumentUpload = () => {
                 <p className="ant-upload-hint">
                     Support for a single or bulk upload. Strictly prohibit from uploading company data or other
                     band files
-    </p>
+                </p>
             </Dragger>
             <button className="w-full py-2 bg-blue-500 rounded-md mt-6 text-white"
             onClick={ () => {
