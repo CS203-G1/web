@@ -30,7 +30,7 @@ const AuthLuth = (props: props) => {
     }, [])
 
     const redirectAwayAuthenticated = ( pathname:string, group:string[] ) => {
-        if ( commonPath.includes(pathname) ) {
+        if (commonPath.includes(pathname)) {
             return 
         }
         if (!group.includes('ROLE_EMPLOYER') && unauthenticated.includes(pathname)) {
