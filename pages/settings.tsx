@@ -11,7 +11,7 @@ const Settings = () => {
             await Auth.signOut()
             router.push("/")
         } catch (e) {
-            return
+            console.error(e);
         }
     }
 
