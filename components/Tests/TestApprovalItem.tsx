@@ -71,7 +71,7 @@ const TestApprovalItem = (props: props) => {
 
 
             </Modal>
-            <div className="w-72 flex flex-col gap-6 pt-6 bg-white items-center rounded-lg shadow cursor-pointer transform scale-100 hover:shadow-lg hover:scale-105 duration-300 ease-in-out">
+            <div className="w-72 flex flex-col gap-6 pt-6 bg-white items-center rounded-lg shadow">
                 <Image className="object-cover" height={200} width={200} src="https://picsum.photos/200" alt="picture" />
                 <div className="flex flex-row w-full border-t border-l border-r">
                     <button className="flex-1 py-2 border-r text-center text-green-500 hover:bg-gray-100 rounded-bl-lg" onClick={approve}>
