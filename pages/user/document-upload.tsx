@@ -53,7 +53,7 @@ const DocumentUpload = () => {
 
     return (
         <Layout header="Test Upload">
-            <Dragger {...props}>
+            <Dragger height={200} {...props}>
                 <p className="ant-upload-drag-icon">
                     <InboxOutlined />
                 </p>
