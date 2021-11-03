@@ -3,6 +3,8 @@ import React from "react"
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup"
+import { addEmployee } from '../../services/roster/employee/employees'
+import { Auth } from "aws-amplify";
 interface props {
     visible: boolean
     handleCancel: () => void
@@ -21,12 +23,27 @@ const AddEmployeeModal = (props: props) => {
         email: yup.string().email().required(),
     })
 
-    const { register, handleSubmit, formState: { errors }, reset } = useForm({
+    const { register, getValues, handleSubmit, formState: { errors }, reset } = useForm({
         resolver: yupResolver(schema),
     });
 
     const onSubmitHandler = async (data: Form) => {
         props.handleOk()
+    }
+
+    const add = async () => {
+        const { signInUserSession } = await Auth.currentAuthenticatedUser()
+        const jwt = signInUserSession.accessToken.jwtToken
+        const name = getValues('name')
+        const email = getValues('email')
+
+        // const { user } = await Auth.signUp({
+        //     username: email,
+        //     password: "Password123~:)hehexd",
+        // })
+        // console.log(user);
+        
+        // await addEmployee(jwt, ...register("name"))
     }
 
     return (
@@ -50,7 +67,7 @@ const AddEmployeeModal = (props: props) => {
                     </div>
 
                     <div className="flex flex-row justify-end">
-                        <button type="submit" className="bg-blue-500 rounded-md px-3 py-1 text-white font-bold">
+                        <button type="submit" className="bg-blue-500 rounded-md px-3 py-1 text-white font-bold" onClick={add}>
                             + Add
                         </button>
                     </div>
