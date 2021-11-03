@@ -1,12 +1,10 @@
-import type { NextPage } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
-import styles from '../styles/Home.module.css'
 // @ts-ignore
 import { UilBookReader, UilUser, UilAngleRightB } from '@iconscout/react-unicons'
 import Link from 'next/link'
 
-const Home: NextPage = () => {
+const Home = () => {
     return (
         <div className="h-screen flex flex-row">
             <div className="h-full w-96 bg-blue-100">
