@@ -11,7 +11,7 @@ interface props {
 const AuthLuth = (props: props) => {
     const router = useRouter()
 
-    const unauthenticated = ['/', '/admin-login', '/employee-login']
+    const unauthenticated = ['/', '/login', '/admin-login', '/employee-login']
 
     const commonPath = ['/settings']
     
@@ -20,10 +20,13 @@ const AuthLuth = (props: props) => {
 
         Auth.currentAuthenticatedUser().then( user => {
             const group = user.signInUserSession.accessToken.payload["cognito:groups"]
+            console.log(user.signInUser.accessToken.jwtToken);
+            console.log(user);
+            
             
             redirectAwayAuthenticated(pathname, group)
             return 
-        }).catch( () => {
+        }).catch( () => {            
             redirectAwayUnauthenticated(pathname)
         })
 
@@ -43,7 +46,7 @@ const AuthLuth = (props: props) => {
 
     const redirectAwayUnauthenticated = ( pathname: string) => {
         if (!unauthenticated.includes(pathname)) {
-            router.push('/')
+            router.push('/login')
         }
     }
 
