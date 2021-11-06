@@ -47,6 +47,10 @@ const Home: NextPage = () => {
                     <ActivityCard value={0} type={"Total Deaths"} change={-1} />
                     <ActivityCard value={0} type={"Total Deaths"} change={-1} />
                 </div>
+
+                <div className="w-full border rounded-md">
+                    
+                </div>
             </div>
         </div>
     )
