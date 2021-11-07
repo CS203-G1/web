@@ -22,8 +22,8 @@ const ThorLhor = (props: props) => {
     }, [])
 
     const redirectNotAdmin = () => {
-        if (pathname.substring(0, 5) !="/user" ) {
-            router.push("/user")
+        if (pathname.substring(0, 5) !="/user" || pathname != "/settings" ) {
+            router.push("/")
         }
     }
 

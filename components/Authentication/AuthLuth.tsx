@@ -37,7 +37,7 @@ const AuthLuth = (props: props) => {
             return 
         }
         if (!group.includes('ROLE_EMPLOYER') && unauthenticated.includes(pathname)) {
-            router.push('/user')
+            router.push('/user/dashboard')
         }
         else if (unauthenticated.includes(pathname)) {
             router.push('/dashboard')
@@ -45,8 +45,10 @@ const AuthLuth = (props: props) => {
     }
 
     const redirectAwayUnauthenticated = ( pathname: string) => {
+        console.log(pathname);
+        
         if (!unauthenticated.includes(pathname)) {
-            router.push('/login')
+            router.push('/')
         }
     }
 

@@ -6,6 +6,7 @@ import { UilComparison } from '@iconscout/react-unicons'
 import { getAnalyticsBarGraph } from '../services/analytics/graph'
 import ActivityCard from "../components/Dashboard/Activity/ActivityCard"
 import { useRouter } from 'next/router'
+import LineChartComponent from "../components/Homepage/LineChart"
 
 const Home: NextPage = () => {
     const router = useRouter()
@@ -49,7 +50,7 @@ const Home: NextPage = () => {
                 </div>
 
                 <div className="w-full border rounded-md">
-                    
+                    <LineChartComponent data={bar.reverse().slice(0)} />
                 </div>
             </div>
         </div>
