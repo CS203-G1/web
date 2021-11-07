@@ -1,9 +1,7 @@
 import React, { useState } from 'react';
 import { LineChart, AreaChart, Area, Line, Tooltip, ResponsiveContainer, CartesianGrid } from 'recharts';
 import { DateTime } from 'luxon'
-import { Ticker } from "react-flip-ticker";
 import numeral from "numeral";
-import { data } from 'autoprefixer';
 
 interface props {
     data: any
@@ -54,13 +52,13 @@ const BarChartComponent = (props: props) => {
 
             <div className="flex flex-row gap-1">
                 <div className="flex flex-col pr-2">
-                    <span>
+                    <span className="text-right">
                         New Domitory Cases
                     </span>
-                    <span>
+                    <span className="text-right">
                         New Imported Cases
                     </span>
-                    <span>
+                    <span className="text-right">
                         New Local Cases
                     </span>
                 </div>
