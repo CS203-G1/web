@@ -20,8 +20,6 @@ const AuthLuth = (props: props) => {
 
         Auth.currentAuthenticatedUser().then( user => {
             const group = user.signInUserSession.accessToken.payload["cognito:groups"]
-            console.log(user.signInUser.accessToken.jwtToken);
-            console.log(user);
             
             // eslint-disable-next-line react-hooks/exhaustive-deps
             redirectAwayAuthenticated(pathname, group)
@@ -45,9 +43,7 @@ const AuthLuth = (props: props) => {
         }
     }
 
-    const redirectAwayUnauthenticated = ( pathname: string) => {
-        console.log(pathname);
-        
+    const redirectAwayUnauthenticated = ( pathname: string) => {        
         if (!unauthenticated.includes(pathname)) {
             router.push('/')
         }

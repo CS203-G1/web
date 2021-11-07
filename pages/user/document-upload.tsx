@@ -28,26 +28,14 @@ const DocumentUpload = () => {
     const props = {
         name: 'file',
         multiple: true,
-        onChange(info: any) {
-            console.log(info);
-            
+        onChange(info: any) {            
             const { status } = info.file;
-            if (status !== 'uploading') {
-                console.log(info.file, info.fileList);
-            }
             if (status === 'done') {
-                setFile(info.file.originFileObj)
-                console.log(info.file.originFileObj);
-                
+                setFile(info.file.originFileObj)                
                 message.success(`${info.file.name} file uploaded successfully.`);
             } else if (status === 'error') {
                 message.error(`${info.file.name} file upload failed.`);
             }
-        },
-        onDrop(e: any) {
-            console.log(e);
-            
-            console.log('Dropped files', e.dataTransfer.files);
         },
     };
 

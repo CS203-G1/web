@@ -129,7 +129,6 @@ const Sidebar = (props: props) => {
                             await Auth.signOut
                             router.push("/")
                         } catch (e) {
-                            console.log(e);
                         }
                     }}>
                     Go to help center
