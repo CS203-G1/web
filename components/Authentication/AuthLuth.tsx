@@ -11,7 +11,7 @@ interface props {
 const AuthLuth = (props: props) => {
     const router = useRouter()
 
-    const unauthenticated = ['/', '/admin-login', '/employee-login']
+    const unauthenticated = ['/', '/login', '/admin-login', '/employee-login']
 
     const commonPath = ['/settings']
     
@@ -21,9 +21,11 @@ const AuthLuth = (props: props) => {
         Auth.currentAuthenticatedUser().then( user => {
             const group = user.signInUserSession.accessToken.payload["cognito:groups"]
             
+            // eslint-disable-next-line react-hooks/exhaustive-deps
             redirectAwayAuthenticated(pathname, group)
             return 
         }).catch( () => {
+            // eslint-disable-next-line react-hooks/exhaustive-deps
             redirectAwayUnauthenticated(pathname)
         })
 
@@ -34,14 +36,14 @@ const AuthLuth = (props: props) => {
             return 
         }
         if (!group.includes('ROLE_EMPLOYER') && unauthenticated.includes(pathname)) {
-            router.push('/user')
+            router.push('/user/dashboard')
         }
         else if (unauthenticated.includes(pathname)) {
             router.push('/dashboard')
         }
     }
 
-    const redirectAwayUnauthenticated = ( pathname: string) => {
+    const redirectAwayUnauthenticated = ( pathname: string) => {        
         if (!unauthenticated.includes(pathname)) {
             router.push('/')
         }

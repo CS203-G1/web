@@ -4,7 +4,7 @@ import { UilBell, UilEllipsisH, UilAngleUp, UilArrowGrowth, UilChartDown } from 
 interface props {
     value: number
     type: string
-    change: number
+    change: number | string
 }
 
 const ActivityCard = (props: props) => {
@@ -12,7 +12,7 @@ const ActivityCard = (props: props) => {
     const graphColor = props.change > 0 ? "text-green-500" : "text-red-500"
 
     return (
-        <div className={`card bg-white flex-1 flex flex-col gap-3`}>
+        <div className={`card bg-white flex-1 flex flex-col gap-3 border`}>
             <h2 className="font-bold text-md">
                 { props.type }
             </h2>

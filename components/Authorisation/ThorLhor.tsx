@@ -16,14 +16,15 @@ const ThorLhor = (props: props) => {
         Auth.currentAuthenticatedUser().then( user => {
             const group = user.signInUserSession.accessToken.payload["cognito:groups"]
             if (!group.includes('ROLE_EMPLOYER')) {
+                // eslint-disable-next-line react-hooks/exhaustive-deps
                 redirectNotAdmin()
             }
         })
     }, [])
 
     const redirectNotAdmin = () => {
-        if (pathname.substring(0, 5) !="/user" ) {
-            router.push("/user")
+        if (pathname.substring(0, 5) !="/user" || pathname != "/settings" ) {
+            router.push("/")
         }
     }
 

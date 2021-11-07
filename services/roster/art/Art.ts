@@ -1,13 +1,13 @@
 import axios from "axios"
 
 // const uri = process.env.NEXT_PUBLIC_ROSTER_URL
-const uri = process.env.NEXT_PUBLIC_LOCAL_ROSTER_URL
+const uri = process.env.NEXT_PUBLIC_ROSTER_URL
 
 export const addArt = async ( accessToken: string, employeeId: string, file: File ) => {
     const formData = new FormData()
     formData.append('employeeId', employeeId)
     formData.append('file', file)
-    await axios.post(`${uri}/employees/${employeeId}/requests/art-request`, formData, {
+    await axios.post(`${uri}/roster/employees/${employeeId}/requests/art-request`, formData, {
         headers: {
             Authorization: `Bearer ${accessToken}`
         }
@@ -15,7 +15,7 @@ export const addArt = async ( accessToken: string, employeeId: string, file: Fil
 }
 
 export const getArts = async (accessToken: string) => {
-    const res = await axios.get(`${uri}/companies/${"14f671b0-511e-43e4-86bb-6828f7a8e12d"}/requests/art-request/PENDING`, {
+    const res = await axios.get(`${uri}/roster/companies/${"14f671b0-511e-43e4-86bb-6828f7a8e12d"}/requests/art-request/PENDING`, {
         headers: {
             Authorization: `Bearer ${accessToken}`
         }
@@ -28,7 +28,7 @@ export const getArts = async (accessToken: string) => {
 }
 
 export const processArt = async ( accessToken: string, artId: string, HeathStatus: string, RequestStatus: string ) => {
-    await axios.put(`${uri}/requests/art-request/${artId}`, {
+    await axios.put(`${uri}/roster/requests/art-request/${artId}`, {
         heathStatus: HeathStatus,
         requestStatus: RequestStatus,
     }, {
