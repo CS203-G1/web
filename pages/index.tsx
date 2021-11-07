@@ -8,12 +8,14 @@ import ActivityCard from "../components/Dashboard/Activity/ActivityCard"
 import { useRouter } from 'next/router'
 import LineChartComponent from "../components/Homepage/LineChart"
 import BarChartComponent from "../components/Homepage/BarChart"
+import PieChartComponent from "../components/Homepage/PieChart"
 
 const Home: NextPage = () => {
     const router = useRouter()
     const [bar, setBar] = useState([])
     const [line, setLine] = useState([])
     const [barStats, setBarStats] = useState({})
+    const [pieStats, setPieStats] = useState<any>([])
 
     useEffect(() => {
         getAnalyticsBarGraph().then(res => {
@@ -23,6 +25,17 @@ const Home: NextPage = () => {
 
         getAnalyticsLineGraph().then(res => {
             setLine(res)
+            const firstLine = res[0]
+            let firstData: any = []
+            firstData.push({
+                name: "Total Cases",
+                value: firstLine.totalCases
+            })
+            firstData.push({
+                name: "Total Recovered",
+                value: firstLine.totalRecovered
+            })
+            setPieStats(firstData)
         })
     }, [])
 
@@ -53,22 +66,32 @@ const Home: NextPage = () => {
                     <ActivityCard value={0} type={"Total Deaths"} change={-1} />
                 </div>
 
-                <div className="w-full grid lg:grid-cols-2 grid-cols-1 gap-2">
-                    <div>
-                        <h1 className="text-2xl mb-2">
-                            Vaccination Statistics
-                        </h1>
-                        <div className="w-full border p-1 rounded-md">
-                            <LineChartComponent data={bar.slice(0).reverse()} />
+                <div className="w-full grid lg:grid-cols-6 grid-cols-1 gap-2">
+                    <div className="col-span-4">
+                        <div>
+                            <h1 className="text-2xl mb-2">
+                                Vaccination Statistics
+                            </h1>
+                            <div className="w-full border p-1 rounded-md">
+                                <LineChartComponent data={bar.slice(0).reverse()} />
+                            </div>
+                        </div>
+                        <div>
+                            <h1 className="text-2xl mb-2">
+                                Number of Cases
+                            </h1>
+                            <div className="w-full border p-1 rounded-md">
+                                <BarChartComponent data={line.slice(0).reverse()} />
+                            </div>
                         </div>
                     </div>
 
-                    <div>
+                    <div className="col-span-2 flex flex-col h-full">
                         <h1 className="text-2xl mb-2">
-                            Number of Cases
+                            Breakdown
                         </h1>
-                        <div className="w-full border p-1 rounded-md">
-                            <BarChartComponent data={line.slice(0).reverse()} />
+                        <div className="flex-1 border rounded-md">
+                            <PieChartComponent data={pieStats} />
                         </div>
                     </div>
                 </div>
