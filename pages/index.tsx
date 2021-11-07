@@ -3,22 +3,26 @@ import React, { useEffect, useState } from "react"
 import styles from '../styles/Home.module.css'
 // @ts-ignore
 import { UilComparison } from '@iconscout/react-unicons'
-import { getAnalyticsBarGraph } from '../services/analytics/graph'
+import { getAnalyticsBarGraph, getAnalyticsLineGraph } from '../services/analytics/graph'
 import ActivityCard from "../components/Dashboard/Activity/ActivityCard"
 import { useRouter } from 'next/router'
 import LineChartComponent from "../components/Homepage/LineChart"
+import BarChartComponent from "../components/Homepage/BarChart"
 
 const Home: NextPage = () => {
     const router = useRouter()
     const [bar, setBar] = useState([])
+    const [line, setLine] = useState([])
     const [barStats, setBarStats] = useState({})
 
     useEffect(() => {
         getAnalyticsBarGraph().then(res => {
-            console.log(res);
-
             setBar(res)
             setBarStats(res[0])
+        })
+
+        getAnalyticsLineGraph().then(res => {
+            setLine(res)
         })
     }, [])
 
@@ -61,10 +65,10 @@ const Home: NextPage = () => {
 
                     <div>
                         <h1 className="text-2xl mb-2">
-                            Vaccination Statistics
+                            Number of Cases
                         </h1>
                         <div className="w-full border p-1 rounded-md">
-                            <LineChartComponent data={bar.slice(0).reverse()} />
+                            <BarChartComponent data={line.slice(0).reverse()} />
                         </div>
                     </div>
                 </div>

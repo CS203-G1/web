@@ -10,3 +10,12 @@ export const getAnalyticsBarGraph = async () => {
         console.log(e);
     }
 }
+
+export const getAnalyticsLineGraph = async () => {
+    try {
+        const res = await axios.get(`${uri}/analytics/graph/line`)
+        return res.data
+    } catch (e) {
+        console.log(e);
+    }
+}
