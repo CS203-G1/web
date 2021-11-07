@@ -13,12 +13,12 @@ const Home: NextPage = () => {
     const [barStats, setBarStats] = useState({})
 
     useEffect(() => {
-        // getAnalyticsBarGraph().then(res => {
-        //     console.log(res);
+        getAnalyticsBarGraph().then(res => {
+            console.log(res);
             
-        //     setBar(res)
-        //     setBarStats(res[0])
-        // })
+            setBar(res)
+            setBarStats(res[0])
+        })
     }, [])
 
     return (
