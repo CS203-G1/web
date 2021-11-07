@@ -4,7 +4,7 @@ import { UilBell, UilEllipsisH, UilAngleUp, UilArrowGrowth, UilChartDown } from 
 interface props {
     value: number
     type: string
-    change: number
+    change: number | string
 }
 
 const ActivityCard = (props: props) => {

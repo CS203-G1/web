@@ -9,12 +9,13 @@ import { useRouter } from 'next/router'
 import LineChartComponent from "../components/Homepage/LineChart"
 import BarChartComponent from "../components/Homepage/BarChart"
 import PieChartComponent from "../components/Homepage/PieChart"
+import numeral from "numeral"
 
 const Home: NextPage = () => {
     const router = useRouter()
-    const [bar, setBar] = useState([])
-    const [line, setLine] = useState([])
-    const [barStats, setBarStats] = useState({})
+    const [bar, setBar] = useState<any>([])
+    const [line, setLine] = useState<any>([])
+    const [barStats, setBarStats] = useState<any>({})
     const [pieStats, setPieStats] = useState<any>([])
 
     useEffect(() => {
@@ -59,12 +60,16 @@ const Home: NextPage = () => {
                     Singapore Covid-19 Situation
                 </h1>
 
-                <div className="grid xl:grid-cols-4 lg:grid-cols-3 grid-cols-2 gap-2">
-                    <ActivityCard value={0} type={"Total Deaths"} change={-1} />
-                    <ActivityCard value={0} type={"Total Deaths"} change={-1} />
-                    <ActivityCard value={0} type={"Total Deaths"} change={-1} />
-                    <ActivityCard value={0} type={"Total Deaths"} change={-1} />
-                </div>
+                {
+                    line && line.length > 0 &&
+                    <div className="grid xl:grid-cols-4 lg:grid-cols-3 grid-cols-2 gap-2">
+                        <ActivityCard value={line[0].totalDeaths} type={"Total Deaths"} change={numeral((line[0].totalDeaths - line[1].totalDeaths) / line[1].totalDeaths).format('0.00')} />
+                        <ActivityCard value={line[0].totalCases} type={"Total Cases"} change={numeral((line[0].totalCases - line[1].totalCases) / line[1].totalCases).format('0.00')} />
+                        <ActivityCard value={line[0].totalRecovered} type={"Total Recovered"} change={numeral((line[0].totalRecovered - line[1].totalRecovered) / line[1].totalRecovered).format('0.00')} />
+                        <ActivityCard value={line[0].newLocalCases} type={"New Local Cases"} change={numeral((line[0].newLocalCases - line[1].newLocalCases) / line[1].newLocalCases).format('0.00')} />
+
+                    </div>
+                }
 
                 <div className="w-full grid lg:grid-cols-6 grid-cols-1 gap-2">
                     <div className="col-span-4">
@@ -86,12 +91,44 @@ const Home: NextPage = () => {
                         </div>
                     </div>
 
-                    <div className="col-span-2 flex flex-col h-full">
+                    <div className="col-span-2 flex flex-col h-full gap-2">
                         <h1 className="text-2xl mb-2">
                             Breakdown
                         </h1>
-                        <div className="flex-1 border rounded-md">
+                        <div className="border rounded-md">
                             <PieChartComponent data={pieStats} />
+
+                            <div className="grid grid-cols-2 px-4 py-2 gap-2">
+                                <div className="flex flex-col items-center">
+                                    <h2 className="text-xs text-gray-500">
+                                        Total Cases
+                                    </h2>
+                                        {
+                                            line && line.length > 0 &&
+                                            <div className="text-xl font-semibold flex flex-row items-center gap-1">
+                                                <div className="h-3 w-3 bg-blue-500 rounded-full" />
+                                                <span>{line[0].totalCases}</span>
+                                            </div>
+                                        }
+                                </div>
+
+                                <div className="flex flex-col items-center">
+                                    <h2 className="text-xs text-gray-500">
+                                        Total Recovered
+                                    </h2>
+                                        {
+                                            line && line.length > 0 &&
+                                            <div className="text-xl font-semibold flex flex-row items-center gap-1">
+                                                <div className="h-3 w-3 bg-green-500 rounded-full" />
+                                                <span>{line[0].totalRecovered}</span>
+                                            </div>
+                                        }
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className="flex-1 text-xl font-semibold text-blue-900 border text-center flex flex-col justify-center">
+                            Dash your way through Covid with us!
                         </div>
                     </div>
                 </div>
