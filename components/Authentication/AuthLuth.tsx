@@ -23,10 +23,11 @@ const AuthLuth = (props: props) => {
             console.log(user.signInUser.accessToken.jwtToken);
             console.log(user);
             
-            
+            // eslint-disable-next-line react-hooks/exhaustive-deps
             redirectAwayAuthenticated(pathname, group)
             return 
-        }).catch( () => {            
+        }).catch( () => {
+            // eslint-disable-next-line react-hooks/exhaustive-deps
             redirectAwayUnauthenticated(pathname)
         })
 

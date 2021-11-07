@@ -34,6 +34,7 @@ const Tests = () => {
                     data && data.map((item, index) => {
                         return (
                             <TestApprovalItem
+                                key={index}
                                 photourl={"https://picsum.photos/200"}
                                 artId={item.id}
                                 employeeId={item.employee.id}
