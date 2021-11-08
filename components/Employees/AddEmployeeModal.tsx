@@ -3,6 +3,8 @@ import React from "react"
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup"
+import { addEmployee } from "../../services/employees/employees";
+import { Auth } from "aws-amplify";
 interface props {
     visible: boolean
     handleCancel: () => void
@@ -21,12 +23,19 @@ const AddEmployeeModal = (props: props) => {
         email: yup.string().email().required(),
     })
 
-    const { register, handleSubmit, formState: { errors }, reset } = useForm({
+    const { register, handleSubmit, formState: { errors }, reset, getValues } = useForm({
         resolver: yupResolver(schema),
     });
 
     const onSubmitHandler = async (data: Form) => {
-        props.handleOk()
+        try {
+            const { signInUserSession } = await Auth.currentAuthenticatedUser()
+            const jwt = signInUserSession.accessToken.jwtToken
+            await addEmployee(jwt, "49c13ace-ca48-44bb-a9e9-8e3c330862db", getValues('name'), getValues('email'))
+            props.handleOk()            
+        } catch (e) {
+            return
+        }
     }
 
     return (

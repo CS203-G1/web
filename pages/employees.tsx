@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react"
 import Layout from "../components/Common/Layout"
 import AddEmployeeModal from "../components/Employees/AddEmployeeModal"
 import EmployeeCard from "../components/Employees/EmployeeCard"
-import { getAllEmployees } from '../services/employees/employees'
+import { getAllEmployees, addEmployee } from '../services/employees/employees'
 import { Employee } from "../types/Employee/employee"
 
 const Employees = () => {
@@ -25,7 +25,8 @@ const Employees = () => {
         setAddEmployeeModal(false)
     }
 
-    const handleModalOk = () => {
+    const handleModalOk = async () => {
+        
         setAddEmployeeModal(false)
     }
     return (
