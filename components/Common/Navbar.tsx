@@ -15,7 +15,7 @@ const Navbar = (props:props) => {
                         { props.title }
                     </h1>
 
-                    <div className="flex flex-row gap-4 items-center">
+                    {/* <div className="flex flex-row gap-4 items-center">
                         <div className="bg-gray-200 p-1 rounded-full">
                             <UilBell size={20} />
                         </div>
@@ -35,7 +35,7 @@ const Navbar = (props:props) => {
                                 </div>
                             </div>
                         </Link>
-                    </div>
+                    </div> */}
                 </div>
 
 

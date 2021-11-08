@@ -65,14 +65,14 @@ const TestApprovalItem = (props: props) => {
                             </span>
                         this test request
                     </h1>
-                    <Image className="object-cover" height={200} width={200} src="https://picsum.photos/200" alt="picture" />
+                    <Image className="object-cover" height={200} width={200} src={props.photourl} alt="picture" />
                     <p className="text-xl">This test belongs to {props.employeeName}</p>
                 </div>
 
 
             </Modal>
             <div className="w-72 flex flex-col gap-6 pt-6 bg-white items-center rounded-lg shadow">
-                <Image className="object-cover" height={200} width={200} src="https://picsum.photos/200" alt="picture" />
+                <Image className="object-cover" height={200} width={200} src={props.photourl} alt="picture" />
                 <div className="flex flex-row w-full border-t border-l border-r">
                     <button className="flex-1 py-2 border-r text-center text-green-500 hover:bg-gray-100 rounded-bl-lg" onClick={approve}>
                         Approve

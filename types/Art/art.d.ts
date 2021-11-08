@@ -1,7 +1,7 @@
 import { Employee } from '../Employee/employee'
 
 export type ArtItem = {
-    photoUrl : string
+    imageUrl : string
     id: string
     employee: Employee
 }

@@ -35,7 +35,7 @@ const Tests = () => {
                         return (
                             <TestApprovalItem
                                 key={index}
-                                photourl={"https://picsum.photos/200"}
+                                photourl={item.imageUrl}
                                 artId={item.id}
                                 employeeId={item.employee.id}
                                 employeeName={item.employee.name}
