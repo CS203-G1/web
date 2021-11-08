@@ -78,7 +78,10 @@ const Home: NextPage = () => {
                                 Vaccination Statistics
                             </h1>
                             <div className="w-full border p-1 rounded-md">
-                                <LineChartComponent data={bar.slice(0).reverse()} />
+                                {
+                                    bar && bar.length > 0 &&
+                                    <LineChartComponent data={bar.slice(0).reverse()} />
+                                }
                             </div>
                         </div>
                         <div>
@@ -86,7 +89,10 @@ const Home: NextPage = () => {
                                 Number of Cases
                             </h1>
                             <div className="w-full border p-1 rounded-md">
-                                <BarChartComponent data={line.slice(0).reverse()} />
+                                {
+                                    line && line.length > 0 &&
+                                    <BarChartComponent data={line.slice(0).reverse()} />
+                                }
                             </div>
                         </div>
                     </div>

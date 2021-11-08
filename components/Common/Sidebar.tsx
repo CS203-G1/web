@@ -13,7 +13,6 @@ interface props {
 
 const Sidebar = (props: props) => {
 
-    const visible = !props.close ? "" : "translate-x-0 visible"
     const router = useRouter()
     const [admin, setAdmin] = useState(false)
 
@@ -98,7 +97,7 @@ const Sidebar = (props: props) => {
     </div>
 
     return (
-        <div className={`h-full w-64 bg-blue-900 text-white flex flex-col justify-between transform duration-300 ease-in-out ${visible}`}>
+        <div className={`h-full w-64 bg-blue-900 text-white lg:flex hidden flex-col justify-between`}>
 
             <div className="ml-4 my-4">
                 <div className="flex flex-row gap-3 items-center mb-10">
