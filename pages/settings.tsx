@@ -3,7 +3,10 @@ import Layout from "../components/Common/Layout"
 import { Auth } from 'aws-amplify';
 import { useRouter } from "next/router";
 import { getEmployee } from "../services/employees/employees";
-import { Modal } from 'antd'
+import { Modal, Popover, message } from 'antd'
+import { useForm } from "react-hook-form";
+import * as yup from "yup";
+import { yupResolver } from "@hookform/resolvers/yup"
 
 const Settings = () => {
     const router = useRouter()
@@ -12,6 +15,7 @@ const Settings = () => {
     const [number, setNumber] = useState("")
     const [name, setName] = useState("")
     const [heathstatus, setHeathStatus] = useState("")
+    const [newModal, setNewModal] = useState(false)
 
     useEffect(() => {
         Auth.currentAuthenticatedUser().then(user => {
@@ -21,6 +25,8 @@ const Settings = () => {
             const jwt = user.signInUserSession.accessToken.jwtToken
 
             getEmployee(jwt, "49c13ace-ca48-44bb-a9e9-8e3c330862db", user.attributes.sub).then(employee => {
+                console.log(employee);
+                
                 if (employee) {
                     setHeathStatus(employee.healthStatus)
                     setName(employee.name)
@@ -38,8 +44,73 @@ const Settings = () => {
         }
     }
 
+    const schema = yup.object().shape({
+        password: yup.string().min(1).max(30).required(),
+        repassword: yup.string().min(1).max(30).required(),
+    })
+
+    const { register, handleSubmit, formState: { errors }, reset, getValues } = useForm({
+        resolver: yupResolver(schema),
+    });
+
+    const onSubmitHandler = async () => {
+        handleModalOk()
+    }
+
+    const handleModalClose = () => {
+        setNewModal(false)
+    }
+
+    const handleModalOk = async () => {
+        const password = getValues('password')
+        const repassword = getValues('repassword')
+        Auth.currentAuthenticatedUser().then(user => {
+            Auth.changePassword(user, password, repassword)
+        }).then(() => {
+            message.success("Password has been reset successfully")
+            setNewModal(false)
+        }).catch((e) => {
+            console.log(e);
+            
+            message.error(e.message)
+        })
+    }
+
     return (
         <>
+            <Modal visible={newModal} onOk={handleModalOk} onCancel={handleModalClose}>
+                <div className="flex flex-col w-full gap-6">
+                    <div className="flex flex-col items-center gap-3">
+                        <h1 className="text-lg font-bold">
+                            Password Reset
+                        </h1>
+                        <h4>
+                            Enter new password and then repeat it
+                        </h4>
+                    </div>
+
+                    <form onSubmit={handleSubmit(onSubmitHandler)}>
+                        <div className="flex flex-col gap-3 px-8">
+
+                            <div className="flex flex-col">
+                                <label htmlFor="">Old Password</label>
+                                <Popover content={errors.name?.message} visible={errors?.name ? true : false} placement="right">
+                                    <input {...register("password")} className="border-2 rounded-md px-2 py-2 w-full" type="password" />
+                                </Popover>
+                            </div>
+
+
+                            <div className="flex flex-col">
+                                <label htmlFor="">New Password</label>
+                                <Popover style={{ color: 'white' }} overlayClassName="text-white" content={errors.email?.message} visible={errors?.email ? true : false} color="red" placement="right">
+                                    <input {...register("repassword")} className="border-2 rounded-md px-2 py-2 w-full" type="password" />
+                                </Popover>
+                            </div>
+                        </div>
+                    </form>
+
+                </div>
+            </Modal>
             <Layout header="User Settings">
                 <h1 className="text-xl font-bold">
                     Account Settings
@@ -95,7 +166,7 @@ const Settings = () => {
                             Logout
                     </button>
                         <button className="bg-blue-500 px-4 py-2 rounded-md text-white" onClick={() => {
-                            signOut()
+                            setNewModal(true)
                         }}>
                             Reset Password
                     </button>

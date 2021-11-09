@@ -31,13 +31,7 @@ const UserLogin = () => {
     });
 
     const onSubmitHandler = async (data: Form) => {
-        try {
-            const { signInUserSession } = await Auth.currentAuthenticatedUser()
-            const jwt = signInUserSession.accessToken.jwtToken
-
-        } catch (e) {
-            return
-        }
+        handleModalOk()
     }
 
     const login = async () => {
