@@ -3,11 +3,14 @@ import Link from "next/link"
 import { useRouter } from "next/router"
 import React, { useState } from "react"
 import Image from 'next/image'
-import {Modal} from 'antd'
+import { Modal, Popover, message } from 'antd'
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup"
 
+type Form = {
+    password: string
+}
 
 const UserLogin = () => {
 
@@ -16,26 +19,85 @@ const UserLogin = () => {
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
     const [newModal, setNewModal] = useState(false)
+    const [cognitoUser, setCognitoUser] = useState()
+
+    const schema = yup.object().shape({
+        password: yup.string().min(1).max(30).required(),
+        repassword: yup.string().min(1).max(30).required(),
+    })
+
+    const { register, handleSubmit, formState: { errors }, reset, getValues } = useForm({
+        resolver: yupResolver(schema),
+    });
+
+    const onSubmitHandler = async (data: Form) => {
+        try {
+            const { signInUserSession } = await Auth.currentAuthenticatedUser()
+            const jwt = signInUserSession.accessToken.jwtToken
+
+        } catch (e) {
+            return
+        }
+    }
 
     const login = async () => {
         try {
             const res = await Auth.signIn(email, password)
             console.log(res);
-
-            // router.push("/user/dashboard")
+            setCognitoUser(res)
+            if (res.challengeName === "NEW_PASSWORD_REQUIRED") {
+                setNewModal(true)
+            } else {
+                router.push("/user/dashboard")
+            }
 
         } catch (e) {
+            message.error(e.message)
         }
     }
 
     const handleModalClose = () => {
+        setNewModal(false)
+    }
 
+    const handleModalOk = async () => {
+        try {
+            await Auth.completeNewPassword(
+                cognitoUser,
+                getValues("password")
+            )
+            router.push("/user/dashboard")
+        } catch (e) {
+            console.log(e);
+            message.error(e.message)
+        }
     }
 
     return (
         <>
-            <Modal visible={!newModal} title="Set your password" >
+            <Modal visible={newModal} title="Set your password" onOk={handleModalOk} onCancel={handleModalClose} >
+                <h1 className="text-lg mb-4 text-gray-500">
+                    This is your first time logging into your account, please set a new password!
+                </h1>
+                <form onSubmit={handleSubmit(onSubmitHandler)}>
+                    <div className="flex flex-col gap-3">
 
+                        <div className="flex flex-col">
+                            <label htmlFor="">Password</label>
+                            <Popover content={errors.name?.message} visible={errors?.name ? true : false} placement="right">
+                                <input {...register("password")} className="border-2 rounded-md px-2 py-1 lg:w-1/2" type="text" />
+                            </Popover>
+                        </div>
+
+
+                        <div className="flex flex-col">
+                            <label htmlFor="">Re-enter Password</label>
+                            <Popover style={{ color: 'white' }} overlayClassName="text-white" content={errors.email?.message} visible={errors?.email ? true : false} color="red" placement="right">
+                                <input {...register("repassword")} className="border-2 rounded-md px-2 py-1 lg:w-1/2" type="text" />
+                            </Popover>
+                        </div>
+                    </div>
+                </form>
             </Modal>
             <div className="h-screen flex flex-row">
 
