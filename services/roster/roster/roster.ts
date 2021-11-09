@@ -11,3 +11,12 @@ export const getRosterByDay = async (accessToken: string, date: string) => {
 
     return res.data
 }
+
+export const getRosterByEmployeeId = async (accessToken: string, employeeId: string) => {
+    const res = await axios.get(`${uri}/roster/employees/${employeeId}/rosters/weekly`, {
+        headers: {
+            Authorization: `Bearer ${accessToken}`
+        }
+    })
+    return res.data
+}

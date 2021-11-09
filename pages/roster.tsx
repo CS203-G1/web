@@ -27,14 +27,12 @@ const Roster = () => {
         <Layout header="Roster">
             {
                 roster && roster.map((item: any, index: number) => {
-                    const from = DateTime.fromISO(item.roster.fromDateTime).toLocaleString(DateTime.TIME_24_SIMPLE)
-                    const to = DateTime.fromISO(item.roster.toDateTime).toLocaleString(DateTime.TIME_24_SIMPLE)
                     return (
                         <>
                             <TimeRoster
                                 key={index}
                                 number={index + 1}
-                                from={from} to={to}
+                                from={item.roster.fromDateTime} to={item.roster.toDateTime}
                                 employees={item.employees}
                                 numberOfEmployees={item.employees.length} />
                         </>

@@ -3,6 +3,7 @@ import { Employee } from "../../types/Employee/employee"
 // @ts-ignore
 import { UilAngleDown, UilAngleLeft, UilAngleRight } from '@iconscout/react-unicons'
 import Link from 'next/link'
+import { DateTime } from "luxon"
 interface props {
     number: number
     from: string
@@ -23,7 +24,7 @@ const TimeRoster = (props: props) => {
                         Shift {props.number}
                     </h1>
                     <h2 className="text-gray-500 tracking-tight">
-                        {props.from} - {props.to}
+                        {DateTime.fromISO(props.from).toLocaleString(DateTime.TIME_24_SIMPLE)} - {DateTime.fromISO(props.to).toLocaleString(DateTime.TIME_24_SIMPLE)}
                     </h2>
                     <h2 className="text-gray-500 tracking-tight">
                         Number of employees: {props.numberOfEmployees}
