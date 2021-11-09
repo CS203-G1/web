@@ -34,7 +34,7 @@ const Employees = () => {
             <AddEmployeeModal visible={addEmployeeModal} handleCancel={handleModalCancel} handleOk={handleModalOk} />
             <Layout header="Employees">
                 <div className="flex flex-row justify-between border-b">
-                    <div className="flex flex-row gap-10">
+                    {/* <div className="flex flex-row gap-10">
                         <span className="font-bold py-3 cursor-pointer border-b-4 border-blue-400">
                             All
                     </span>
@@ -42,7 +42,8 @@ const Employees = () => {
                         <span className="py-3 cursor-pointer">
                             Work Location
                     </span>
-                    </div>
+                    </div> */}
+                    <div></div>
 
                     <button type="button" className="px-3 py-2 bg-blue-500 rounded-lg font-semibold shadow-lg text-white mb-2 hover:bg-blue-700 hover:shadow-xl"
                         onClick={() => {
@@ -62,9 +63,9 @@ const Employees = () => {
                                     id={item?.id}
                                     photoUrl="https://picsum.photos/200"
                                     name={item?.name}
-                                    email="byebye@afterclass.com"
-                                    position="Line Cook"
-                                    status="Vaccinated "
+                                    email={item.email}
+                                    position={item.position}
+                                    status={item.healthStatus}
                                     healthStatus={item.healthStatus} />
                             )
                         })

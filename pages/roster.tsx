@@ -1,86 +1,44 @@
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import Layout from "../components/Common/Layout"
-import EmployeeRosterItem from "../components/Roster/EmployeeRosterItem"
-import { Button, DatePicker, Dropdown, Menu } from 'antd'
-import { Moment } from "moment"
-import moment from "moment"
+import { DateTime } from 'luxon'
 // @ts-ignore
 import { UilAngleDown, UilAngleLeft, UilAngleRight } from '@iconscout/react-unicons'
 // import RosterScheduling from "../components/Roster/ShiftScheduling"
-import ShiftScheduling from "../components/Roster/shift/ShiftScheduling"
+import { getRosterByDay } from '../services/roster/roster/roster'
+import { Auth } from "aws-amplify"
+import TimeRoster from "../components/Roster/TimeRoster"
 
 const Roster = () => {
 
-    const [date, setDate] = useState<string>(moment().format("LL"))
+    const [roster, setRoster] = useState([])
+    const [employees, setEmployees] = useState()
+    const [date, setDate] = useState(DateTime.now().toISODate())
 
-    const dateOnChange = (date: Moment | null, dateString: string) => {
-        setDate(dateString)
-    }
-
-    const menu = (<Menu>
-        <Menu.Item>
-            <div>
-                Tampines
-                    </div>
-        </Menu.Item>
-        <Menu.Item>
-            <div>
-                Tampines
-                    </div>
-        </Menu.Item>
-    </Menu>)
+    useEffect(() => {
+        Auth.currentAuthenticatedUser().then(user => {
+            const jwt = user.signInUserSession.accessToken.jwtToken
+            getRosterByDay(jwt, date).then(res => {
+                setRoster(res)
+            })
+        })
+    }, [])
 
     return (
         <Layout header="Roster">
-            <div className="flex flex-col gap-10">
-
-                <div>
-                    <div className="flex flex-row gap-2 items-center">
-                        <DatePicker onChange={dateOnChange} />
-                        <Dropdown overlay={menu} placement="bottomLeft">
-                            <button className="flex gap-1 h-full items-center bg-white">
-                                <span>
-                                    Work Location
-                                </span>
-                                <UilAngleDown />
-                            </button>
-                        </Dropdown>
-                    </div>
-                    <div>
-                        <div className="grid grid-cols-8">
-                            <div className="flex-1 bg-white border border-gray-300 py-4 text-center font-bold text-indigo-500">
-                            </div>
-                            <div className="flex-1 bg-white border border-gray-300 py-4 text-center font-bold text-indigo-500">
-                                Mon
-                        </div>
-                            <div className="flex-1 bg-white border border-gray-300 py-4 text-center font-bold text-indigo-500">
-                                Tues
-                        </div>
-                            <div className="flex-1 bg-white border border-gray-300 py-4 text-center font-bold text-indigo-500">
-                                Wed
-                        </div>
-                            <div className="flex-1 bg-white border border-gray-300 py-4 text-center font-bold text-indigo-500">
-                                Thurs
-                        </div>
-                            <div className="flex-1 bg-white border border-gray-300 py-4 text-center font-bold text-indigo-500">
-                                Fri
-                        </div>
-                            <div className="flex-1 bg-white border border-gray-300 py-4 text-center font-bold text-indigo-500">
-                                Sat
-                        </div>
-                            <div className="flex-1 bg-white border border-gray-300 py-4 text-center font-bold text-indigo-500">
-                                Sun
-                        </div>
-                        </div>
-                        <EmployeeRosterItem name="Bing Yu Ling Yu" photoUrl="https://picsum.photos/200" />
-                        <EmployeeRosterItem name="Yoghurt Dog" photoUrl="https://picsum.photos/200" />
-                        <EmployeeRosterItem name="Rui Xian" photoUrl="https://picsum.photos/200" />
-                        <EmployeeRosterItem name="Arvin Aik" photoUrl="https://picsum.photos/200" />
-                    </div>
-                </div>
-
-                <ShiftScheduling />
-            </div>
+            {
+                roster && roster.map((item: any, index: number) => {
+                    return (
+                        <>
+                            <TimeRoster
+                                key={index}
+                                number={index + 1}
+                                from={item.roster.fromDateTime} to={item.roster.toDateTime}
+                                employees={item.employees}
+                                numberOfEmployees={item.employees.length} />
+                        </>
+                    )
+                })
+            }
         </Layout>
     )
 }

@@ -5,6 +5,7 @@ import LoginImage from '../public/Login/login.svg'
 import { Auth } from 'aws-amplify'
 import { useState } from "react";
 import { useRouter } from "next/router";
+import { message } from 'antd'
 
 const AdminLogin = () => {
 
@@ -19,6 +20,7 @@ const AdminLogin = () => {
             router.push("/dashboard")
             
         } catch(e) {
+            message.error(e.message)
         }
     }
 
