@@ -15,7 +15,8 @@ interface props {
 enum RequestStatus {
     PENDING,
     REJECTED,
-    APPROVED
+    APPROVED,
+    COVID
 }
 
 const TestApprovalItem = (props: props) => {
@@ -32,7 +33,12 @@ const TestApprovalItem = (props: props) => {
         setStatus(RequestStatus.REJECTED)
         setModalVisible(true)
     }
-    
+
+    const covid = () => {
+        setStatus(RequestStatus.COVID)
+        setModalVisible(true)
+    }
+
     const cancelOperation = () => {
         setStatus(RequestStatus.PENDING)
         setModalVisible(false)
@@ -43,8 +49,10 @@ const TestApprovalItem = (props: props) => {
         const jwt = signInUserSession.accessToken.jwtToken
         if (status == RequestStatus.APPROVED) {
             await processArt(jwt, props.artId, 'HEALTHY', 'APPROVED')
-        } else{
-            await processArt(jwt, props.artId, 'ILL', 'REJECTED')
+        } else if (status == RequestStatus.COVID) {
+            await processArt(jwt, props.artId, 'COVID', 'APPROVED')
+        } else {
+            await processArt(jwt, props.artId, 'HEALTHY', 'REJECTED')
         }
         props.refresh()
         setModalVisible(false)
@@ -61,8 +69,8 @@ const TestApprovalItem = (props: props) => {
                     <h1 className="text-xl">
                         You are now
                             <span className={`${status === RequestStatus.APPROVED ? "text-green-500" : "text-red-500"}`}>
-                                { status === RequestStatus.APPROVED ? " APPROVING " : " REJECTING " }
-                            </span>
+                            {status === RequestStatus.APPROVED ? " APPROVING " : " REJECTING "}
+                        </span>
                         this test request
                     </h1>
                     <Image className="object-cover" height={200} width={200} src={props.photourl} alt="picture" />
@@ -77,8 +85,11 @@ const TestApprovalItem = (props: props) => {
                     <button className="flex-1 py-2 border-r text-center text-green-500 hover:bg-gray-100 rounded-bl-lg" onClick={approve}>
                         Approve
                 </button>
-                    <button className="flex-1 py-2 text-center text-red-500 hover:bg-gray-100 rounded-br-lg" onClick={reject}>
+                    <button className="flex-1 py-2 text-center text-red-500 hover:bg-gray-100 border-r" onClick={reject}>
                         Reject
+                </button>
+                    <button className="flex-1 py-2 text-center bg-red-500 text-white hover:bg-red-600 rounded-br-lg" onClick={covid}>
+                        Covid
                 </button>
                 </div>
             </div>

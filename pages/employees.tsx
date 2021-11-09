@@ -62,9 +62,9 @@ const Employees = () => {
                                     id={item?.id}
                                     photoUrl="https://picsum.photos/200"
                                     name={item?.name}
-                                    email="byebye@afterclass.com"
-                                    position="Line Cook"
-                                    status="Vaccinated "
+                                    email={item.email}
+                                    position={item.position}
+                                    status={item.healthStatus}
                                     healthStatus={item.healthStatus} />
                             )
                         })
