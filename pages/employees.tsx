@@ -64,7 +64,8 @@ const Employees = () => {
                                     name={item?.name}
                                     email="byebye@afterclass.com"
                                     position="Line Cook"
-                                    status="Vaccinated " />
+                                    status="Vaccinated "
+                                    healthStatus={item.healthStatus} />
                             )
                         })
                     }
