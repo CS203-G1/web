@@ -124,7 +124,7 @@ const Settings = () => {
                         </h2>
 
                             <div className="text-gray-500">
-                                name
+                                {name ? name : "-"}
                         </div>
                         </div>
 
@@ -134,7 +134,7 @@ const Settings = () => {
                         </h2>
 
                             <div className="text-gray-500">
-                                {email}
+                                {email ? email : "-"}
                             </div>
                         </div>
 
@@ -144,7 +144,7 @@ const Settings = () => {
                         </h2>
 
                             <div className="text-gray-500">
-                                {number}
+                                {number ? number : "-"}
                             </div>
                         </div>
 
@@ -154,7 +154,7 @@ const Settings = () => {
                         </h2>
 
                             <div className="text-gray-500">
-                                {heathstatus}
+                                {heathstatus ? heathstatus : "-"}
                             </div>
                         </div>
                     </div>
