@@ -31,19 +31,13 @@ const Roster = () => {
                     const to = DateTime.fromISO(item.roster.toDateTime).toLocaleString(DateTime.TIME_24_SIMPLE)
                     return (
                         <>
-                        <TimeRoster
-                            key={index}
-                            number={index + 1}
-                            from={from} to={to}
-                            employees={item.employees}
-                            numberOfEmployees={item.employees.length} />
                             <TimeRoster
-                            key={index}
-                            number={index + 1}
-                            from={from} to={to}
-                            employees={item.employees}
-                            numberOfEmployees={item.employees.length} />
-                            </>
+                                key={index}
+                                number={index + 1}
+                                from={from} to={to}
+                                employees={item.employees}
+                                numberOfEmployees={item.employees.length} />
+                        </>
                     )
                 })
             }
