@@ -18,11 +18,19 @@ const Employee = () => {
     const [employeeDetails, setEmployeeDetails] = useState<EmployeeType>()
     const [roster, setRoster] = useState<any>([])
     const [hoveredDate, setHoveredDate] = useState<Moment>()
+    const [email, setEmail] = useState("")
+    const [number, setNumber] = useState("")
+    const [name, setName] = useState("")
+    const [heathstatus, setHeathStatus] = useState("")
 
     const employee = async () => {
         const { signInUserSession } = await Auth.currentAuthenticatedUser()
         const jwt = signInUserSession.accessToken.jwtToken
         const res = await getEmployee(jwt, "49c13ace-ca48-44bb-a9e9-8e3c330862db", slug as string)
+        if(res) {
+            setHeathStatus(res.healthStatus)
+            setEmail(res.email)
+        }
         const roster = await getRosterByEmployeeId(jwt, slug as string)
         setEmployeeDetails(res as EmployeeType)
         setRoster(roster)
@@ -61,9 +69,30 @@ const Employee = () => {
 
     return (
         <Layout header={employeeDetails?.name as string}>
+            <div className="flex flex-row gap-10 w-full mb-6">
+                        <div className="flex flex-col">
+                            <h2 className="text-lg font-bold">
+                                Email
+                        </h2>
+
+                            <div className="text-gray-500">
+                                {email ? email : "-"}
+                            </div>
+                        </div>
+
+                        <div className="flex flex-col">
+                            <h2 className="text-lg font-bold">
+                                Health Status
+                        </h2>
+
+                            <div className="text-gray-500">
+                                {heathstatus ? heathstatus : "-"}
+                            </div>
+                        </div>
+                    </div>
             <div className="flex flex-col w-full">
                 <h1 className="text-xl font-bold mb-2">
-                    Your Shifts
+                    Shifts
                 </h1>
                 <div className="flex flex-wrap gap-4">
                     {
