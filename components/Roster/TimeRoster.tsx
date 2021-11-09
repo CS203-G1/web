@@ -43,7 +43,7 @@ const TimeRoster = (props: props) => {
                 {
                     props.employees && props.employees.map((item, index) => {
                         return (
-                            <Link href={`/employee/${item.id}`} passHref>
+                            <Link href={`/employee/${item.id}`} key={index} passHref>
                                 <div className={`transition-all ease-in-out duration-300 border-b px-2 hover:bg-gray-300 cursor-pointer flex flex-col ${animation}`} key={index}>
                                     <h1 className="text-lg font-semibold py-1">
                                         {item.name}
