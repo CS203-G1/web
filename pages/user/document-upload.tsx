@@ -41,16 +41,18 @@ const DocumentUpload = () => {
 
     return (
         <Layout header="Test Upload">
-            <Dragger {...props}>
-                <p className="ant-upload-drag-icon">
-                    <InboxOutlined />
-                </p>
-                <p className="ant-upload-text">Click or drag file to this area to upload</p>
-                <p className="ant-upload-hint">
-                    Support for a single or bulk upload. Strictly prohibit from uploading company data or other
-                    band files
-                </p>
-            </Dragger>
+            <div>
+                <Dragger {...props}>
+                    <p className="ant-upload-drag-icon">
+                        <InboxOutlined />
+                    </p>
+                    <p className="ant-upload-text">Click or drag file to this area to upload</p>
+                    <p className="ant-upload-hint">
+                        Support for a single or bulk upload. Strictly prohibit from uploading company data or other
+                        band files
+                    </p>
+                </Dragger>
+            </div>
             <button className="w-full py-2 bg-blue-500 rounded-md mt-6 text-white"
             onClick={ () => {
                 addArtLahSial()
