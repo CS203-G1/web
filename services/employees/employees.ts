@@ -24,14 +24,11 @@ export const getEmployee = async (accessToken: string, departmentId: string, emp
                 Authorization: `Bearer ${accessToken}`
             }
         })
-        if (res.status !== 200) {
-            return []
-        }
 
         return res.data
     } catch (e) {
         console.log(e.message);
-
+        return 
     }
 
 }

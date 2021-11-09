@@ -5,6 +5,7 @@ export type Employee = {
     email: string
     status: string
     position: string
+    healthStatus: string
 }
 
 export type EmployeeShift = {
