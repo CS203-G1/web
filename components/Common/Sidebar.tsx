@@ -36,9 +36,9 @@ const Sidebar = (props: props) => {
                 <NavigationItem name="Dashboard" path="/dashboard">
                     <UisChart />
                 </NavigationItem>
-                <NavigationItem name="Inbox" path="/inbox">
+                {/* <NavigationItem name="Inbox" path="/inbox">
                     <UilCommentDots />
-                </NavigationItem>
+                </NavigationItem> */}
             </div>
 
             <div className="flex flex-col">
@@ -51,9 +51,9 @@ const Sidebar = (props: props) => {
                 <NavigationItem name="Employees" path="/employees">
                     <UilUserSquare />
                 </NavigationItem>
-                <NavigationItem name="Analytics" path="/analytics">
+                {/* <NavigationItem name="Analytics" path="/analytics">
                     <UilChartLine />
-                </NavigationItem>
+                </NavigationItem> */}
                 <NavigationItem name="Tests" path="/tests">
                     <UilStethoscope />
                 </NavigationItem>
@@ -79,9 +79,9 @@ const Sidebar = (props: props) => {
             <NavigationItem name="Dashboard" path="/user/dashboard">
                 <UisChart />
             </NavigationItem>
-            <NavigationItem name="Inbox" path="/inbox">
+            {/* <NavigationItem name="Inbox" path="/inbox">
                 <UilCommentDots />
-            </NavigationItem>
+            </NavigationItem> */}
             <NavigationItem name="Test Upload" path="/user/document-upload">
                 <UilFileUploadAlt />
             </NavigationItem>
