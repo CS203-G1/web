@@ -14,11 +14,11 @@ const ThorLhor = (props: props) => {
 
     useEffect(() => {
         Auth.currentAuthenticatedUser().then( user => {
-            const group = user.signInUserSession.accessToken.payload["cognito:groups"]
-            if (!group.includes('ROLE_EMPLOYER')) {
-                // eslint-disable-next-line react-hooks/exhaustive-deps
-                redirectNotAdmin()
-            }
+            // const group = user.signInUserSession.accessToken.payload["cognito:groups"]
+            // if (!group.includes('ROLE_EMPLOYER')) {
+            //     // eslint-disable-next-line react-hooks/exhaustive-deps
+            //     redirectNotAdmin()
+            // }
         })
     }, [])
 
