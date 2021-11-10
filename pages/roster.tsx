@@ -58,7 +58,7 @@ const Roster = () => {
                 <div className="text-lg font-bold">
                     {date}
                 </div>
-                <div onClick={() => {changeDate(1)}}>
+                <div className="cursor-pointer" onClick={() => {changeDate(1)}}>
                     <UilAngleRight size="35" />
                 </div>
             </div>
