@@ -35,3 +35,16 @@ export const addEmployeeRoster = async (accessToken: string, rosterId: string, e
         throw e
     }
 }
+
+export const removeEmployeeRoster = async (accessToken: string, rosterId: string, employeeId: string) => {
+    try {
+        const res = await axios.delete(`${uri}/rosters/${rosterId}/employees/${employeeId}`, {
+            headers: {
+                Authorization: `Bearer ${accessToken}`
+            }
+        })
+    }
+    catch (e) {
+        throw e
+    }
+}
