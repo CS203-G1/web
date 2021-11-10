@@ -14,6 +14,19 @@ const Roster = () => {
     const [employees, setEmployees] = useState()
     const [date, setDate] = useState(DateTime.now().toISODate())
 
+    const changeDate = (num: number) => {
+        let curr = DateTime.fromISO(date)
+        if (num < 0) {
+            curr = curr.minus({days:1})
+            console.log(curr);
+            
+            setDate(curr.toISODate())
+        } else {
+            curr = curr.plus({days:1})
+            setDate(curr.toISODate())
+        }
+    }
+
     const refetch = async () => {
         Auth.currentAuthenticatedUser().then(user => {
             const jwt = user.signInUserSession.accessToken.jwtToken
@@ -30,12 +43,25 @@ const Roster = () => {
             const id = user.attributes.sub
             getRosterByDay(jwt, date, id).then(res => {
                 setRoster(res)
+            }).catch(e => {
+                setRoster([])
             })
         })
-    }, [])
+    }, [date])
 
     return (
         <Layout header="Roster">
+            <div className="flex flex-row justify-center gap-4 py-2 items-center">
+                <div className="cursor-pointer" onClick={() => {changeDate(-1)}}>
+                    <UilAngleLeft size="35" />
+                </div>
+                <div className="text-lg font-bold">
+                    {date}
+                </div>
+                <div onClick={() => {changeDate(1)}}>
+                    <UilAngleRight size="35" />
+                </div>
+            </div>
             {
                 roster && roster.map((item: any, index: number) => {
                     return (
