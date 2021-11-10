@@ -14,10 +14,21 @@ const Roster = () => {
     const [employees, setEmployees] = useState()
     const [date, setDate] = useState(DateTime.now().toISODate())
 
+    const refetch = async () => {
+        Auth.currentAuthenticatedUser().then(user => {
+            const jwt = user.signInUserSession.accessToken.jwtToken
+            const id = user.attributes.sub
+            getRosterByDay(jwt, date, id).then(res => {
+                setRoster(res)
+            })
+        })
+    }
+
     useEffect(() => {
         Auth.currentAuthenticatedUser().then(user => {
             const jwt = user.signInUserSession.accessToken.jwtToken
-            getRosterByDay(jwt, date).then(res => {
+            const id = user.attributes.sub
+            getRosterByDay(jwt, date, id).then(res => {
                 setRoster(res)
             })
         })
@@ -35,7 +46,8 @@ const Roster = () => {
                                 from={item.roster.fromDateTime} to={item.roster.toDateTime}
                                 employees={item.employees}
                                 numberOfEmployees={item.employees.length} 
-                                rosterId={item.roster.id} />
+                                rosterId={item.roster.id}
+                                refetch={refetch} />
                         </>
                     )
                 })

@@ -2,8 +2,8 @@ import axios from 'axios'
 
 const uri = process.env.NEXT_PUBLIC_ROSTER_URL
 
-export const getRosterByDay = async (accessToken: string, date: string) => {
-    const res = await axios.get(`${uri}/roster/employers/8cdbf3f5-4cae-4c20-adcd-9ee736c1813c/rosters/date/${date}`, {
+export const getRosterByDay = async (accessToken: string, date: string, employerId: string) => {
+    const res = await axios.get(`${uri}/roster/employers/${employerId}/rosters/date/${date}`, {
         headers: {
             Authorization: `Bearer ${accessToken}`
         }
@@ -22,8 +22,9 @@ export const getRosterByEmployeeId = async (accessToken: string, employeeId: str
 }
 
 export const addEmployeeRoster = async (accessToken: string, rosterId: string, employeeId: string) => {
+    let message = ""
     try {
-        const res = await axios.post(`${uri}/rosters/${rosterId}/employees/${employeeId}`, {
+        const res = await axios.post(`${uri}/roster/rosters/${rosterId}/employees/${employeeId}`, {
 
         }, {
             headers: {
@@ -32,13 +33,17 @@ export const addEmployeeRoster = async (accessToken: string, rosterId: string, e
         })
     }
     catch (e) {
-        throw e
+        console.log(e.toString());
+        
+        throw Error("You have reached the maximum capacity")
+    } finally{
+        
     }
 }
 
 export const removeEmployeeRoster = async (accessToken: string, rosterId: string, employeeId: string) => {
     try {
-        const res = await axios.delete(`${uri}/rosters/${rosterId}/employees/${employeeId}`, {
+        const res = await axios.delete(`${uri}/roster/rosters/${rosterId}/employees/${employeeId}`, {
             headers: {
                 Authorization: `Bearer ${accessToken}`
             }
