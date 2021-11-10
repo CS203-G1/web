@@ -22,6 +22,7 @@ const DocumentUpload = () => {
         Auth.currentAuthenticatedUser().then(user => {
             const jwt = user.signInUserSession.accessToken.jwtToken
             addArt(jwt, employeeid, file as File)
+            message.success("Photo uploaded successfully")
         })
     }
 

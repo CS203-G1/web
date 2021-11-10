@@ -63,7 +63,7 @@ const TimeRoster = (props: props) => {
                     {
                         employees && employees.map((item, index) => {
                             return (
-                                <div className="flex flex-row py-2 px-1 hover:bg-gray-100" onClick={() => {
+                                <div className="flex flex-row py-2 px-1 hover:bg-gray-100" key={index} onClick={() => {
                                     addEmployee(item.id)
                                 }}>
                                     <h1 className="text-lg font-semibold">
