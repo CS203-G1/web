@@ -34,7 +34,7 @@ const TimeRoster = (props: props) => {
                     message.error(e.message)
                 })
         })
-    }
+    } 
 
     const deleteEmployee = async (employeeId: string) => {
         Auth.currentAuthenticatedUser().then(user => {

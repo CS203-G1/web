@@ -44,7 +44,7 @@ const UserDashboard = () => {
                 // console.log(moment(roster[i].date).format('d'));
                 
                 
-                if (date.format("M D") === moment(roster[i].date).format("M D")) {
+                if (roster[i] && date.format("M D") === moment(roster[i].date).format("M D")) {
                     return (
                         <div>
                             {DateTime.fromISO(roster[i].fromDateTime).toLocaleString(DateTime.TIME_24_SIMPLE)} - {DateTime.fromISO(roster[i].toDateTime).toLocaleString(DateTime.TIME_24_SIMPLE)}
@@ -69,7 +69,7 @@ const UserDashboard = () => {
                 </h1>
                 <div className="flex flex-wrap gap-4">
                     {
-                        roster && roster.map((item: any, index: number) => {
+                        roster && roster[0] && roster.map((item: any, index: number) => {
                             return (
                                 <EmployeeRosterItem
                                     key={index}
@@ -83,9 +83,10 @@ const UserDashboard = () => {
                 </div>
             </div>
 
-            <div className="p-3 mt-4 bg-white">
+            {roster && roster[0] &&
+                <div className="p-3 mt-4 bg-white">
                 <Calendar value={hoveredDate} dateCellRender={renderCalanderDate}  />
-            </div>
+            </div>}
         </Layout>
     )
 }
