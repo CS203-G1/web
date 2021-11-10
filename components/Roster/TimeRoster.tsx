@@ -1,20 +1,35 @@
 import { useState } from "react"
 import { Employee } from "../../types/Employee/employee"
 // @ts-ignore
-import { UilAngleDown, UilAngleLeft, UilAngleRight } from '@iconscout/react-unicons'
+import { UilAngleDown, UilAngleLeft, UilAngleRight, UilPlus } from '@iconscout/react-unicons'
 import Link from 'next/link'
 import { DateTime } from "luxon"
+import { addEmployeeRoster } from '../../services/roster/roster/roster'
+import { Auth } from "aws-amplify"
+import { message } from 'antd'
 interface props {
     number: number
     from: string
     to: string
     employees: Employee[]
     numberOfEmployees: number
+    rosterId: string
 }
 
 const TimeRoster = (props: props) => {
     const [open, setOpen] = useState(false)
-    const animation = open ? "max-h-36 opacity-100" : "max-h-0 opacity-0"
+    const animation = open ? "max-h-36 opacity-100 py-2" : "max-h-0 opacity-0 py-0"
+
+    const addEmployee = async () => {
+        Auth.currentAuthenticatedUser().then(user => {
+            const jwt = user.signInUserSession.accessToken.jwtToken
+            addEmployeeRoster(jwt, props.rosterId, "6149483b-5c17-45ae-9564-34e7b40dbfd7")
+            .then()
+            .catch(e => {
+                message.error(e.message)
+            })
+        })
+    }
 
     return (
         <div className="w-full shadow-md hover:shadow-lg border-b pt-2 mb-4 cursor-pointer">
@@ -56,6 +71,12 @@ const TimeRoster = (props: props) => {
                         )
                     })
                 }
+                <div className={`transition-all bg-gray-200 ease-in-out duration-300 border-b px-2 hover:bg-gray-300 cursor-pointer flex flex-col items-center ${animation}`}
+                onClick={() => {
+                    addEmployee()
+                }}>
+                    <UilPlus />
+                </div>
             </div>
         </div>
     )

@@ -20,3 +20,18 @@ export const getRosterByEmployeeId = async (accessToken: string, employeeId: str
     })
     return res.data
 }
+
+export const addEmployeeRoster = async (accessToken: string, rosterId: string, employeeId: string) => {
+    try {
+        const res = await axios.post(`${uri}/rosters/${rosterId}/employees/${employeeId}`, {
+
+        }, {
+            headers: {
+                Authorization: `Bearer ${accessToken}`
+            }
+        })
+    }
+    catch (e) {
+        throw e
+    }
+}

@@ -31,12 +31,6 @@ const EmployeeCard = (props: Employee) => {
                     <span className={`p-1 ${color[props.status]} rounded-full`}></span>
                     <span>{ props.status }</span>
                 </div>
-                {/* <div className="flex flex-row gap-2 w-full px-10 items-center justify-center">
-                    <UilClock height={ 20}  width={ 70 } color="#4b5563" />
-                    <Progress percent={ 100 } strokeWidth={ 5 } showInfo={ false } />
-                    <Progress percent={ 100 } strokeWidth={ 5 } showInfo={ false } />
-                    <Progress percent={ 30 } strokeWidth={ 5 } showInfo={ false } />
-                </div> */}
                 <div className="py-4 bg-gray-100 w-full border-t text-center text-gray-500 font-semibold">
                     {props.position ? props.position : "-"}
                 </div>

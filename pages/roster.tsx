@@ -34,7 +34,8 @@ const Roster = () => {
                                 number={index + 1}
                                 from={item.roster.fromDateTime} to={item.roster.toDateTime}
                                 employees={item.employees}
-                                numberOfEmployees={item.employees.length} />
+                                numberOfEmployees={item.employees.length} 
+                                rosterId={item.roster.id} />
                         </>
                     )
                 })
