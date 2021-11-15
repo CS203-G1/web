@@ -9,13 +9,13 @@ interface props {
 
 const Navbar = (props:props) => {
     return(
-        <div className="flex-1 flex flex-col">
+        <div className="flex flex-col">
                 <div className="flex flex-row justify-between items-center w-full px-10 py-4">
                     <h1 className="text-2xl font-semibold">
                         { props.title }
                     </h1>
 
-                    <div className="flex flex-row gap-4 items-center">
+                    {/* <div className="flex flex-row gap-4 items-center">
                         <div className="bg-gray-200 p-1 rounded-full">
                             <UilBell size={20} />
                         </div>
@@ -35,7 +35,7 @@ const Navbar = (props:props) => {
                                 </div>
                             </div>
                         </Link>
-                    </div>
+                    </div> */}
                 </div>
 
 

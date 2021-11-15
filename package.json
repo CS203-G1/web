@@ -9,23 +9,32 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@hookform/resolvers": "^2.8.2",
     "@iconscout/react-unicons": "^1.1.6",
     "@iconscout/react-unicons-solid": "^0.0.3",
+    "@types/luxon": "^2.0.5",
+    "@types/numeral": "^2.0.2",
     "antd": "^4.16.12",
     "autoprefixer": "^10.3.2",
     "aws-amplify": "^4.2.9",
     "axios": "^0.21.1",
     "formik": "^2.2.9",
+    "luxon": "^2.0.2",
     "moment": "^2.29.1",
     "next": "11.1.0",
+    "numeral": "^2.0.6",
     "postcss": "^8.3.6",
     "postcss-preset-env": "^6.7.0",
     "react": "17.0.2",
     "react-dom": "17.0.2",
+    "react-flip-ticker": "^1.0.2",
+    "react-hook-form": "7.19.1",
     "react-query": "^3.21.0",
+    "react-tinder-card": "^1.4.4",
     "recharts": "^2.1.4",
     "storyboard": "^3.3.2",
-    "tailwindcss": "^2.2.7"
+    "tailwindcss": "^2.2.7",
+    "yup": "^0.32.11"
   },
   "devDependencies": {
     "@types/react": "17.0.19",
